@@ -7,14 +7,17 @@ use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Http\Resources\ServiceResource;
 use Illuminate\Support\Facades\Validator;
+use OpenApi\Annotations as OA;
 
 class ApiServiceController extends Controller
 {
+
     public function index()
     {
         $services = Service::all();
         return ServiceResource::collection($services);
     }
+
 
     public function store(Request $request)
     {
@@ -36,10 +39,12 @@ class ApiServiceController extends Controller
         return response()->json(['message' => 'Service created successfully', 'data' => new ServiceResource($service)], 201);
     }
 
+
     public function show(Service $service)
     {
         return new ServiceResource($service);
     }
+
 
     public function update(Request $request, Service $service)
     {
@@ -63,9 +68,11 @@ class ApiServiceController extends Controller
 
     }
 
+
     public function destroy(Service $service)
     {
         $service->delete();
         return response()->json(['message' => 'Service deleted successfully'], 200);
     }
 }
+

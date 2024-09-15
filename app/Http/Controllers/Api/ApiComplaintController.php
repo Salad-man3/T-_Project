@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Complaint;
 use App\Http\Resources\ComplaintResource;
 use Illuminate\Support\Facades\Validator;
+use OpenApi\Annotations as OA;
+
 
 class ApiComplaintController extends Controller
 {
+
     public function index()
     {
         $complaints = Complaint::get();
@@ -19,6 +22,7 @@ class ApiComplaintController extends Controller
             return response()->json(['message' => 'No complaints found'], 200);
         }
     }
+
 
     public function store(Request $request)
     {
@@ -42,6 +46,7 @@ class ApiComplaintController extends Controller
 
         return response()->json(['message' => 'Complaint created successfully', 'data' => new ComplaintResource($complaint)], 201);
     }
+
 
     public function show(Complaint $complaint)
     {
@@ -71,9 +76,34 @@ class ApiComplaintController extends Controller
         return response()->json(['message' => 'Complaint updated successfully', 'data' => new ComplaintResource($complaint)], 201);
     }
 
+
     public function destroy(Complaint $complaint)
     {
         $complaint->delete();
-        return response()->json(['message' => 'Complaint deleted successfully'], 200);
+        return response()->json(['message' => 'Complaint soft deleted successfully'], 200);
+    }
+
+
+    public function trashed()
+    {
+        $trashedComplaints = Complaint::onlyTrashed()->get();
+        return ComplaintResource::collection($trashedComplaints);
+    }
+
+
+    public function restore($id)
+    {
+        $complaint = Complaint::withTrashed()->findOrFail($id);
+        $complaint->restore();
+        return response()->json(['message' => 'Complaint restored successfully'], 200);
+    }
+
+
+    public function forceDelete($id)
+    {
+        $complaint = Complaint::withTrashed()->findOrFail($id);
+        $complaint->forceDelete();
+        return response()->json(['message' => 'Complaint permanently deleted'], 200);
     }
 }
+

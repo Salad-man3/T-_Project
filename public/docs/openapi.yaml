@@ -1,0 +1,1209 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/news:
+    get:
+      summary: ''
+      operationId: getApiNews
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 2
+                      title: mango
+                      description: 'this is a mango'
+                      created_at: '2024-09-15T12:51:27.000000Z'
+                      updated_at: '2024-09-15T12:51:27.000000Z'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 2
+                        title: mango
+                        description: 'this is a mango'
+                        created_at: '2024-09-15T12:51:27.000000Z'
+                        updated_at: '2024-09-15T12:51:27.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 2
+                        title:
+                          type: string
+                          example: mango
+                        description:
+                          type: string
+                          example: 'this is a mango'
+                        created_at:
+                          type: string
+                          example: '2024-09-15T12:51:27.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2024-09-15T12:51:27.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiNews
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: chgtuonhxgkrikydhpvsvdxoz
+                description:
+                  type: string
+                  description: ''
+                  example: 'Ut qui nisi ut assumenda.'
+              required:
+                - title
+                - description
+      security: []
+  '/api/news/{id}':
+    get:
+      summary: ''
+      operationId: getApiNewsId
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 2
+                    title: mango
+                    description: 'this is a mango'
+                    created_at: '2024-09-15T12:51:27.000000Z'
+                    updated_at: '2024-09-15T12:51:27.000000Z'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 2
+                      title:
+                        type: string
+                        example: mango
+                      description:
+                        type: string
+                        example: 'this is a mango'
+                      created_at:
+                        type: string
+                        example: '2024-09-15T12:51:27.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2024-09-15T12:51:27.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiNewsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: eosevlxkhx
+                description:
+                  type: string
+                  description: ''
+                  example: 'Dolor assumenda nulla maiores.'
+              required:
+                - title
+                - description
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiNewsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the news.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  /api/services:
+    get:
+      summary: ''
+      operationId: getApiServices
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                properties:
+                  data:
+                    type: array
+                    example: []
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiServices
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: zuvzdtwhmjwo
+                description:
+                  type: string
+                  description: ''
+                  example: 'Blanditiis hic rem dolor.'
+                service_category_id:
+                  type: string
+                  description: ''
+                  example: qui
+              required:
+                - title
+                - description
+                - service_category_id
+      security: []
+  '/api/services/{id}':
+    get:
+      summary: ''
+      operationId: getApiServicesId
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Record not found.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Record not found.'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiServicesId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: jqgftsjbzur
+                description:
+                  type: string
+                  description: ''
+                  example: 'Aut tempore animi accusamus nisi doloribus nemo dolor ut.'
+                service_category_id:
+                  type: string
+                  description: ''
+                  example: sint
+              required:
+                - title
+                - description
+                - service_category_id
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiServicesId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the service.'
+        example: 11
+        required: true
+        schema:
+          type: integer
+  /api/service-categories:
+    get:
+      summary: ''
+      operationId: getApiServiceCategories
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                properties:
+                  data:
+                    type: array
+                    example: []
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiServiceCategories
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: qpov
+              required:
+                - name
+      security: []
+  '/api/service-categories/{id}':
+    get:
+      summary: ''
+      operationId: getApiServiceCategoriesId
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Record not found.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Record not found.'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiServiceCategoriesId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: asfujsalqcpdw
+              required:
+                - name
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiServiceCategoriesId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the service category.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  /api/activity:
+    get:
+      summary: ''
+      operationId: getApiActivity
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No activities found'
+                properties:
+                  message:
+                    type: string
+                    example: 'No activities found'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiActivity
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: jnskxbvhuamaokmzgqdnnhver
+                activity_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2024-09-15T16:51:03'
+                description:
+                  type: string
+                  description: ''
+                  example: 'Est qui velit nesciunt qui.'
+                activity_type_id:
+                  type: string
+                  description: ''
+                  example: tenetur
+              required:
+                - title
+                - activity_date
+                - description
+                - activity_type_id
+      security: []
+  '/api/activity/{id}':
+    get:
+      summary: ''
+      operationId: getApiActivityId
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Record not found.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Record not found.'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiActivityId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: znjbljdyxprwiatrhpgqj
+                activity_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2024-09-15T16:51:03'
+                description:
+                  type: string
+                  description: ''
+                  example: 'Ducimus dolores ducimus nihil dolor ipsum in at est.'
+                activity_type_id:
+                  type: string
+                  description: ''
+                  example: id
+              required:
+                - title
+                - activity_date
+                - description
+                - activity_type_id
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiActivityId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the activity.'
+        example: 13
+        required: true
+        schema:
+          type: integer
+  /api/activity-type:
+    get:
+      summary: ''
+      operationId: getApiActivityType
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No activity types found'
+                properties:
+                  message:
+                    type: string
+                    example: 'No activity types found'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiActivityType
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: unfwzzvaocdo
+              required:
+                - name
+      security: []
+  '/api/activity-type/{id}':
+    get:
+      summary: ''
+      operationId: getApiActivityTypeId
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Record not found.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Record not found.'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiActivityTypeId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: psdxgvejqkyfaqjeavgfsa
+              required:
+                - name
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiActivityTypeId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the activity type.'
+        example: 13
+        required: true
+        schema:
+          type: integer
+  /api/photo:
+    get:
+      summary: ''
+      operationId: getApiPhoto
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No photos found'
+                properties:
+                  message:
+                    type: string
+                    example: 'No photos found'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiPhoto
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                photo_url:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'http://kulas.com/quia-similique-aliquid-dolor-dolor'
+                photoable_id:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: pguqagqbllpkbnyhlnzyuv
+                photoable_type:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: fqrymfrujdurzdvlps
+              required:
+                - photo_url
+                - photoable_id
+                - photoable_type
+      security: []
+  '/api/photo/{id}':
+    get:
+      summary: ''
+      operationId: getApiPhotoId
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Record not found.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Record not found.'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiPhotoId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                photo_url:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'http://kilback.com/'
+                photoable_id:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: cenydhtxffbdtwryjaiupf
+                photoable_type:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: deiukcigpudt
+              required:
+                - photo_url
+                - photoable_id
+                - photoable_type
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiPhotoId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the photo.'
+        example: 19
+        required: true
+        schema:
+          type: integer
+  /api/complaint:
+    get:
+      summary: ''
+      operationId: getApiComplaint
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: salah
+                      number: '0994030664'
+                      description: 'lorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulum'
+                      status: done
+                      created_at: '2024-09-15T13:36:26.000000Z'
+                      updated_at: '2024-09-15T13:36:26.000000Z'
+                    -
+                      id: 2
+                      name: salah
+                      number: '0994030664'
+                      description: 'lorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulum'
+                      status: done
+                      created_at: '2024-09-15T15:48:00.000000Z'
+                      updated_at: '2024-09-15T15:48:00.000000Z'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: salah
+                        number: '0994030664'
+                        description: 'lorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulum'
+                        status: done
+                        created_at: '2024-09-15T13:36:26.000000Z'
+                        updated_at: '2024-09-15T13:36:26.000000Z'
+                      -
+                        id: 2
+                        name: salah
+                        number: '0994030664'
+                        description: 'lorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulum'
+                        status: done
+                        created_at: '2024-09-15T15:48:00.000000Z'
+                        updated_at: '2024-09-15T15:48:00.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: salah
+                        number:
+                          type: string
+                          example: '0994030664'
+                        description:
+                          type: string
+                          example: 'lorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulum'
+                        status:
+                          type: string
+                          example: done
+                        created_at:
+                          type: string
+                          example: '2024-09-15T13:36:26.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2024-09-15T13:36:26.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiComplaint
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: o
+                number:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: knfaptvollkdaxdtmqst
+                description:
+                  type: string
+                  description: ''
+                  example: 'Nihil dolore eos dolor ipsum.'
+                status:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: uyrjumyahpoxgwl
+              required:
+                - description
+      security: []
+  '/api/complaint/{id}':
+    get:
+      summary: ''
+      operationId: getApiComplaintId
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: salah
+                    number: '0994030664'
+                    description: 'lorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulum'
+                    status: done
+                    created_at: '2024-09-15T13:36:26.000000Z'
+                    updated_at: '2024-09-15T13:36:26.000000Z'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: salah
+                      number:
+                        type: string
+                        example: '0994030664'
+                      description:
+                        type: string
+                        example: 'lorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulum'
+                      status:
+                        type: string
+                        example: done
+                      created_at:
+                        type: string
+                        example: '2024-09-15T13:36:26.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2024-09-15T13:36:26.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiComplaintId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: lozdpbxohtoaknuunzoxj
+                number:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: rkjiobvwsftvcljkbeuuqiin
+                description:
+                  type: string
+                  description: ''
+                  example: 'Et doloribus et possimus earum.'
+                status:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: rw
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiComplaintId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the complaint.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/decision:
+    get:
+      summary: ''
+      operationId: getApiDecision
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No decisions found'
+                properties:
+                  message:
+                    type: string
+                    example: 'No decisions found'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiDecision
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision_id:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: cbpeeahypsbzapkzd
+                decision_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2024-09-15T16:51:04'
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: eivdtmqoeb
+                description:
+                  type: string
+                  description: ''
+                  example: 'Voluptatem tenetur iste officiis.'
+              required:
+                - decision_id
+                - decision_date
+                - title
+                - description
+      security: []
+  '/api/decision/{id}':
+    get:
+      summary: ''
+      operationId: getApiDecisionId
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Record not found.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Record not found.'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiDecisionId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision_id:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: dwionjkdjdewax
+                decision_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2024-09-15T16:51:04'
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: zvbzlzgxcy
+                description:
+                  type: string
+                  description: ''
+                  example: 'Autem praesentium et ipsa modi.'
+              required:
+                - decision_id
+                - decision_date
+                - title
+                - description
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiDecisionId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the decision.'
+        example: 18
+        required: true
+        schema:
+          type: integer
+  /api/complaints/trashed:
+    get:
+      summary: ''
+      operationId: getApiComplaintsTrashed
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                properties:
+                  data:
+                    type: array
+                    example: []
+      tags:
+        - Endpoints
+      security: []
+  '/api/complaints/{id}/restore':
+    post:
+      summary: ''
+      operationId: postApiComplaintsIdRestore
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the complaint.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/complaints/{id}/force':
+    delete:
+      summary: ''
+      operationId: deleteApiComplaintsIdForce
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the complaint.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''

@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\ActivityType;
 use App\Http\Resources\ActivityTypeResource;
 use Illuminate\Support\Facades\Validator;
+use OpenApi\Annotations as OA;
+
 
 class ApiActivityTypeController extends Controller
 {
+
     public function index()
     {
         $activityTypes = ActivityType::get();
@@ -42,6 +45,7 @@ class ApiActivityTypeController extends Controller
         return new ActivityTypeResource($activityType);
     }
 
+
     public function update(Request $request, ActivityType $activityType)
     {
         $validator = Validator::make($request->all(), [
@@ -59,9 +63,11 @@ class ApiActivityTypeController extends Controller
         return response()->json(['message' => 'Activity type updated successfully', 'data' => new ActivityTypeResource($activityType)], 201);
     }
 
+
     public function destroy(ActivityType $activityType)
     {
         $activityType->delete();
         return response()->json(['message' => 'Activity type deleted successfully'], 200);
     }
 }
+

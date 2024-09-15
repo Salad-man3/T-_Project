@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Photo;
 use App\Http\Resources\PhotoResource;
 use Illuminate\Support\Facades\Validator;
+use OpenApi\Annotations as OA;
+
 
 class ApiPhotoController extends Controller
 {
+
     public function index()
     {
         $photos = Photo::get();
@@ -19,6 +22,7 @@ class ApiPhotoController extends Controller
             return response()->json(['message' => 'No photos found'], 200);
         }
     }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -40,10 +44,12 @@ class ApiPhotoController extends Controller
         return response()->json(['message' => 'Photo created successfully', 'data' => new PhotoResource($photo)], 201);
     }
 
+
     public function show(Photo $photo)
     {
         return new PhotoResource($photo);
     }
+
 
     public function update(Request $request, Photo $photo)
     {
@@ -64,11 +70,13 @@ class ApiPhotoController extends Controller
 
         return response()->json(['message' => 'Photo updated successfully', 'data' => new PhotoResource($photo)], 201);
     }
+
+
     public function destroy(Photo $photo)
     {
         $photo->delete();
         return response()->json(['message' => 'Photo deleted successfully'], 200);
     }
-
-
 }
+
+

@@ -22,8 +22,9 @@ Route::apiResource('photo', ApiPhotoController::class);
 Route::apiResource('complaint', ApiComplaintController::class);
 Route::apiResource('decision', ApiDecisionController::class);
 
-
-
+Route::get('complaints/trashed', [ApiComplaintController::class, 'trashed']);
+Route::post('complaints/{id}/restore', [ApiComplaintController::class, 'restore']);
+Route::delete('complaints/{id}/force', [ApiComplaintController::class, 'forceDelete']);
 
 Route::get('/user', function (Request $request) {
     return $request->user();

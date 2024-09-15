@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Activity;
 use App\Http\Resources\ActivityResource;
 use Illuminate\Support\Facades\Validator;
+use OpenApi\Annotations as OA;
 
 class ApiActivityController extends Controller
 {
+
     public function index()
     {
         $activities = Activity::get();
@@ -19,6 +21,7 @@ class ApiActivityController extends Controller
             return response()->json(['message' => 'No activities found'], 200);
         }
     }
+
 
     public function store(Request $request)
     {
@@ -43,10 +46,12 @@ class ApiActivityController extends Controller
         return response()->json(['message' => 'Activity created successfully', 'data' => new ActivityResource($activity)], 201);
     }
 
+
     public function show(Activity $activity)
     {
         return new ActivityResource($activity);
     }
+
 
     public function update(Request $request, Activity $activity)
     {
@@ -71,9 +76,12 @@ class ApiActivityController extends Controller
         return response()->json(['message' => 'Activity updated successfully', 'data' => new ActivityResource($activity)], 201);
     }
 
+
     public function destroy(Activity $activity)
     {
         $activity->delete();
         return response()->json(['message' => 'Activity deleted successfully'], 200);
     }
 }
+
+
