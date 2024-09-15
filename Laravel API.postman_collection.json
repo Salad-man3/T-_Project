@@ -1,0 +1,1172 @@
+{
+	"info": {
+		"_postman_id": "9732f148-1c75-4083-ad2c-880d30bb080d",
+		"name": "Laravel API",
+		"description": "Collection for Laravel API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36834914"
+	},
+	"item": [
+		{
+			"name": "News",
+			"item": [
+				{
+					"name": "GET api/news",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/news",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"news"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/news with limit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/news?limit=5",
+							"path": [
+								"api",
+								"news"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST api/news",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"New Article\",\n  \"description\": \"This is a new article.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/news",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"news"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/news/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/news/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"news",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT api/news/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated Article\",\n  \"description\": \"This is an updated article.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/news/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"news",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE api/news/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/news/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"news",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "GET api/services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/services",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/services with limit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/services?limit=5",
+							"path": [
+								"api",
+								"services"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST api/services",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"New Service\",\n  \"description\": \"This is a new service.\",\n  \"service_category_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/services",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/services/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/services/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"services",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT api/services/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated Service\",\n  \"description\": \"This is an updated service.\",\n  \"service_category_id\": 2\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/services/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"services",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE api/services/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/services/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"services",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Service Categories",
+			"item": [
+				{
+					"name": "GET api/service-categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/service-categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"service-categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/service-categories with limit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/service-categories?limit=5",
+							"path": [
+								"api",
+								"service-categories"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST api/service-categories",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"New Service Category\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/service-categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"service-categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/service-categories/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/service-categories/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"service-categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT api/service-categories/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Service Category\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/service-categories/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"service-categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE api/service-categories/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/service-categories/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"service-categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Activities",
+			"item": [
+				{
+					"name": "GET api/activity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/activity",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"activity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/activity with limit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/activity?limit=5",
+							"path": [
+								"api",
+								"activity"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST api/activity",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"New Activity\",\n  \"description\": \"This is a new activity.\",\n  \"activity_type_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/activity",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"activity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/activity/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/activity/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"activity",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT api/activity/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated Activity\",\n  \"description\": \"This is an updated activity.\",\n  \"activity_type_id\": 2\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/activity/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"activity",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE api/activity/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/activity/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"activity",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Activity Types",
+			"item": [
+				{
+					"name": "GET api/activity-type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/activity-type",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"activity-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/activity-type with limit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/activity-type?limit=5",
+							"path": [
+								"api",
+								"activity-type"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST api/activity-type",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"New Activity Type\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/activity-type",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"activity-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/activity-type/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/activity-type/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"activity-type",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT api/activity-type/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Activity Type\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/activity-type/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"activity-type",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE api/activity-type/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/activity-type/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"activity-type",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Photos",
+			"item": [
+				{
+					"name": "GET api/photo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/photo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"photo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/photo with limit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/photo?limit=5",
+							"path": [
+								"api",
+								"photo"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST api/photo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"photo_url\": \"http://example.com/photo.jpg\",\n  \"photoable_id\": \"1\",\n  \"photoable_type\": \"App\\Models\\News\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/photo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"photo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/photo/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/photo/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"photo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT api/photo/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"photo_url\": \"http://example.com/updated_photo.jpg\",\n  \"photoable_id\": \"2\",\n  \"photoable_type\": \"App\\Models\\Service\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/photo/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"photo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE api/photo/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/photo/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"photo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Complaints",
+			"item": [
+				{
+					"name": "GET api/complaint",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/complaint",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"complaint"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/complaint with limit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/complaint?limit=5",
+							"path": [
+								"api",
+								"complaint"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST api/complaint",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"number\": \"1234567890\",\n  \"description\": \"This is a complaint description.\",\n  \"status\": \"pending\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/complaint",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"complaint"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/complaint/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/complaint/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"complaint",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT api/complaint/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Jane Doe\",\n  \"number\": \"0987654321\",\n  \"description\": \"This is an updated complaint description.\",\n  \"status\": \"resolved\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/complaint/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"complaint",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE api/complaint/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/complaint/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"complaint",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/complaints/trashed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/complaints/trashed",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"complaints",
+								"trashed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST api/complaints/{id}/restore",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/complaints/1/restore",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"complaints",
+								"1",
+								"restore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE api/complaints/{id}/force",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/complaints/1/force",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"complaints",
+								"1",
+								"force"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Decisions",
+			"item": [
+				{
+					"name": "GET api/decision",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/decision",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"decision"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/decision with limit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/decision?limit=5",
+							"path": [
+								"api",
+								"decision"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST api/decision",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"decision_id\": \"DEC-001\",\n  \"decision_date\": \"2023-05-15\",\n  \"title\": \"New Decision\",\n  \"description\": \"This is a new decision.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/decision",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"decision"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET api/decision/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/decision/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"decision",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT api/decision/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"decision_id\": \"DEC-001-UPDATE\",\n  \"decision_date\": \"2023-05-16\",\n  \"title\": \"Updated Decision\",\n  \"description\": \"This is an updated decision.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/decision/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"decision",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE api/decision/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/decision/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"decision",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8000"
+		}
+	]
+}
