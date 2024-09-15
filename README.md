@@ -53,7 +53,7 @@ This project is built using the Laravel framework, leveraging its powerful featu
 
 ### Usage
 - Access the application at `http://localhost:8000`
-- Access the api documentation at `http://127.0.0.1:8000/docs`
+- Access the api documentation by downloading the postman collection and environment files from the repository.
 
 
 
