@@ -12,9 +12,18 @@ use OpenApi\Annotations as OA;
 class ApiServiceController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $services = Service::all();
+        $limit = $request->query('limit', null);
+
+        $query = Service::latest();
+
+        if ($limit && is_numeric($limit)) {
+            $query->limit($limit);
+        }
+
+        $services = $query->get();
+
         return ServiceResource::collection($services);
     }
 

@@ -13,9 +13,18 @@ use OpenApi\Annotations as OA;
 class ApiNewsController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $news = News::get();
+        $limit = $request->query('limit', null);
+
+        $query = News::latest();
+
+        if ($limit && is_numeric($limit)) {
+            $query->limit($limit);
+        }
+
+        $news = $query->get();
+
         if ($news->count() > 0) {
             return NewsResource::collection($news);
         } else {

@@ -13,9 +13,18 @@ use OpenApi\Annotations as OA;
 class ApiServiceCategoryController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $serviceCategories = ServiceCategory::all();
+        $limit = $request->query('limit', null);
+
+        $query = ServiceCategory::latest();
+
+        if ($limit && is_numeric($limit)) {
+            $query->limit($limit);
+        }
+
+        $serviceCategories = $query->get();
+
         return ServiceCategoryResource::collection($serviceCategories);
     }
 
@@ -67,4 +76,3 @@ class ApiServiceCategoryController extends Controller
         return response()->json(['message' => 'Service category deleted successfully'], 200);
     }
 }
-

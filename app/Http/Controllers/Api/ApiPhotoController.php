@@ -13,9 +13,18 @@ use OpenApi\Annotations as OA;
 class ApiPhotoController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $photos = Photo::get();
+        $limit = $request->query('limit', null);
+
+        $query = Photo::latest();
+
+        if ($limit && is_numeric($limit)) {
+            $query->limit($limit);
+        }
+
+        $photos = $query->get();
+
         if ($photos->count() > 0) {
             return PhotoResource::collection($photos);
         } else {

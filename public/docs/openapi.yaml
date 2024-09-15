@@ -77,11 +77,11 @@ paths:
                 title:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: chgtuonhxgkrikydhpvsvdxoz
+                  example: xp
                 description:
                   type: string
                   description: ''
-                  example: 'Ut qui nisi ut assumenda.'
+                  example: 'Dignissimos officia vel illo minima at animi.'
               required:
                 - title
                 - description
@@ -146,11 +146,11 @@ paths:
                 title:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: eosevlxkhx
+                  example: kvh
                 description:
                   type: string
                   description: ''
-                  example: 'Dolor assumenda nulla maiores.'
+                  example: 'Doloremque praesentium voluptatem et error natus.'
               required:
                 - title
                 - description
@@ -213,15 +213,15 @@ paths:
                 title:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: zuvzdtwhmjwo
+                  example: ksrgfsyiarekdcjiaeje
                 description:
                   type: string
                   description: ''
-                  example: 'Blanditiis hic rem dolor.'
+                  example: 'Molestias repellendus dolorem at est voluptas.'
                 service_category_id:
                   type: string
                   description: ''
-                  example: qui
+                  example: atque
               required:
                 - title
                 - description
@@ -267,15 +267,15 @@ paths:
                 title:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: jqgftsjbzur
+                  example: iercmvecpteijggx
                 description:
                   type: string
                   description: ''
-                  example: 'Aut tempore animi accusamus nisi doloribus nemo dolor ut.'
+                  example: 'Id at ea commodi.'
                 service_category_id:
                   type: string
                   description: ''
-                  example: sint
+                  example: magni
               required:
                 - title
                 - description
@@ -295,7 +295,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the service.'
-        example: 11
+        example: 12
         required: true
         schema:
           type: integer
@@ -339,7 +339,7 @@ paths:
                 name:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: qpov
+                  example: pueyoz
               required:
                 - name
       security: []
@@ -383,7 +383,7 @@ paths:
                 name:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: asfujsalqcpdw
+                  example: yhvuhhcwkzqujkp
               required:
                 - name
       security: []
@@ -401,7 +401,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the service category.'
-        example: 2
+        example: 11
         required: true
         schema:
           type: integer
@@ -445,19 +445,19 @@ paths:
                 title:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: jnskxbvhuamaokmzgqdnnhver
+                  example: ypiusci
                 activity_date:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-09-15T16:51:03'
+                  example: '2024-09-15T20:10:45'
                 description:
                   type: string
                   description: ''
-                  example: 'Est qui velit nesciunt qui.'
+                  example: 'Unde voluptatibus tempore molestiae.'
                 activity_type_id:
                   type: string
                   description: ''
-                  example: tenetur
+                  example: qui
               required:
                 - title
                 - activity_date
@@ -504,19 +504,19 @@ paths:
                 title:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: znjbljdyxprwiatrhpgqj
+                  example: sfmrbgklasketmulha
                 activity_date:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-09-15T16:51:03'
+                  example: '2024-09-15T20:10:45'
                 description:
                   type: string
                   description: ''
-                  example: 'Ducimus dolores ducimus nihil dolor ipsum in at est.'
+                  example: 'Incidunt velit eos at beatae.'
                 activity_type_id:
                   type: string
                   description: ''
-                  example: id
+                  example: quia
               required:
                 - title
                 - activity_date
@@ -537,7 +537,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the activity.'
-        example: 13
+        example: 5
         required: true
         schema:
           type: integer
@@ -581,7 +581,7 @@ paths:
                 name:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: unfwzzvaocdo
+                  example: klvosnbdprlbxycbftdlnq
               required:
                 - name
       security: []
@@ -625,7 +625,7 @@ paths:
                 name:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: psdxgvejqkyfaqjeavgfsa
+                  example: vswqqltey
               required:
                 - name
       security: []
@@ -643,7 +643,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the activity type.'
-        example: 13
+        example: 6
         required: true
         schema:
           type: integer
@@ -687,15 +687,15 @@ paths:
                 photo_url:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: 'http://kulas.com/quia-similique-aliquid-dolor-dolor'
+                  example: 'http://ohara.com/'
                 photoable_id:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: pguqagqbllpkbnyhlnzyuv
+                  example: qtucbngsmwemojepm
                 photoable_type:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: fqrymfrujdurzdvlps
+                  example: mxsuapnlcf
               required:
                 - photo_url
                 - photoable_id
@@ -741,15 +741,15 @@ paths:
                 photo_url:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: 'http://kilback.com/'
+                  example: 'http://www.skiles.com/quia-placeat-voluptatem-tempore-nesciunt-velit-et'
                 photoable_id:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: cenydhtxffbdtwryjaiupf
+                  example: qkcsv
                 photoable_type:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: deiukcigpudt
+                  example: drzmsfbqoqgtxbqjoidi
               required:
                 - photo_url
                 - photoable_id
@@ -769,7 +769,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the photo.'
-        example: 19
+        example: 1
         required: true
         schema:
           type: integer
@@ -789,14 +789,6 @@ paths:
                 example:
                   data:
                     -
-                      id: 1
-                      name: salah
-                      number: '0994030664'
-                      description: 'lorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulum'
-                      status: done
-                      created_at: '2024-09-15T13:36:26.000000Z'
-                      updated_at: '2024-09-15T13:36:26.000000Z'
-                    -
                       id: 2
                       name: salah
                       number: '0994030664'
@@ -804,18 +796,18 @@ paths:
                       status: done
                       created_at: '2024-09-15T15:48:00.000000Z'
                       updated_at: '2024-09-15T15:48:00.000000Z'
+                    -
+                      id: 1
+                      name: salah
+                      number: '0994030664'
+                      description: 'lorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulum'
+                      status: done
+                      created_at: '2024-09-15T13:36:26.000000Z'
+                      updated_at: '2024-09-15T13:36:26.000000Z'
                 properties:
                   data:
                     type: array
                     example:
-                      -
-                        id: 1
-                        name: salah
-                        number: '0994030664'
-                        description: 'lorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulum'
-                        status: done
-                        created_at: '2024-09-15T13:36:26.000000Z'
-                        updated_at: '2024-09-15T13:36:26.000000Z'
                       -
                         id: 2
                         name: salah
@@ -824,12 +816,20 @@ paths:
                         status: done
                         created_at: '2024-09-15T15:48:00.000000Z'
                         updated_at: '2024-09-15T15:48:00.000000Z'
+                      -
+                        id: 1
+                        name: salah
+                        number: '0994030664'
+                        description: 'lorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulumlorem ipsulum'
+                        status: done
+                        created_at: '2024-09-15T13:36:26.000000Z'
+                        updated_at: '2024-09-15T13:36:26.000000Z'
                     items:
                       type: object
                       properties:
                         id:
                           type: integer
-                          example: 1
+                          example: 2
                         name:
                           type: string
                           example: salah
@@ -844,10 +844,10 @@ paths:
                           example: done
                         created_at:
                           type: string
-                          example: '2024-09-15T13:36:26.000000Z'
+                          example: '2024-09-15T15:48:00.000000Z'
                         updated_at:
                           type: string
-                          example: '2024-09-15T13:36:26.000000Z'
+                          example: '2024-09-15T15:48:00.000000Z'
       tags:
         - Endpoints
       security: []
@@ -869,19 +869,19 @@ paths:
                 name:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: o
+                  example: dmcwduvfhwpmvv
                 number:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: knfaptvollkdaxdtmqst
+                  example: czxsrdnzboddzqjrqsfrdzm
                 description:
                   type: string
                   description: ''
-                  example: 'Nihil dolore eos dolor ipsum.'
+                  example: 'Possimus cupiditate non quia quidem tempora et accusantium.'
                 status:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: uyrjumyahpoxgwl
+                  example: kccjjgijkge
               required:
                 - description
       security: []
@@ -953,19 +953,19 @@ paths:
                 name:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: lozdpbxohtoaknuunzoxj
+                  example: ohizvoihgqgvtbxgck
                 number:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: rkjiobvwsftvcljkbeuuqiin
+                  example: cqxxuhdtpithaqwyferiac
                 description:
                   type: string
                   description: ''
-                  example: 'Et doloribus et possimus earum.'
+                  example: 'Consequatur quibusdam quibusdam omnis est veniam.'
                 status:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: rw
+                  example: jeoz
       security: []
     delete:
       summary: ''
@@ -1025,19 +1025,19 @@ paths:
                 decision_id:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: cbpeeahypsbzapkzd
+                  example: tucgatpizcuzox
                 decision_date:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-09-15T16:51:04'
+                  example: '2024-09-15T20:10:45'
                 title:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: eivdtmqoeb
+                  example: hfbtdxcp
                 description:
                   type: string
                   description: ''
-                  example: 'Voluptatem tenetur iste officiis.'
+                  example: 'Earum est cupiditate quod ad culpa.'
               required:
                 - decision_id
                 - decision_date
@@ -1084,19 +1084,19 @@ paths:
                 decision_id:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: dwionjkdjdewax
+                  example: ydnuzalyglkfuuald
                 decision_date:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-09-15T16:51:04'
+                  example: '2024-09-15T20:10:45'
                 title:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: zvbzlzgxcy
+                  example: h
                 description:
                   type: string
                   description: ''
-                  example: 'Autem praesentium et ipsa modi.'
+                  example: 'Ea error dicta sed blanditiis incidunt occaecati odio.'
               required:
                 - decision_id
                 - decision_date
@@ -1117,7 +1117,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the decision.'
-        example: 18
+        example: 5
         required: true
         schema:
           type: integer

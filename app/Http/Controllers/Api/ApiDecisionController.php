@@ -13,9 +13,18 @@ use OpenApi\Annotations as OA;
 class ApiDecisionController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $decisions = Decision::get();
+        $limit = $request->query('limit', null);
+
+        $query = Decision::latest();
+
+        if ($limit && is_numeric($limit)) {
+            $query->limit($limit);
+        }
+
+        $decisions = $query->get();
+
         if ($decisions->count() > 0) {
             return DecisionResource::collection($decisions);
         } else {

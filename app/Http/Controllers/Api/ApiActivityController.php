@@ -12,9 +12,18 @@ use OpenApi\Annotations as OA;
 class ApiActivityController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $activities = Activity::get();
+        $limit = $request->query('limit', null);
+
+        $query = Activity::latest();
+
+        if ($limit && is_numeric($limit)) {
+            $query->limit($limit);
+        }
+
+        $activities = $query->get();
+
         if ($activities->count() > 0) {
             return ActivityResource::collection($activities);
         } else {

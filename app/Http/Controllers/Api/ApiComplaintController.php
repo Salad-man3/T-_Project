@@ -13,16 +13,24 @@ use OpenApi\Annotations as OA;
 class ApiComplaintController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $complaints = Complaint::get();
+        $limit = $request->query('limit', null);
+
+        $query = Complaint::latest();
+
+        if ($limit && is_numeric($limit)) {
+            $query->limit($limit);
+        }
+
+        $complaints = $query->get();
+
         if ($complaints->count() > 0) {
             return ComplaintResource::collection($complaints);
         } else {
             return response()->json(['message' => 'No complaints found'], 200);
         }
     }
-
 
     public function store(Request $request)
     {
