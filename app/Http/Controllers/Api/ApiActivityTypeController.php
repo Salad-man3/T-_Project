@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\ActivityType;
+use App\Http\Resources\ActivityTypeResource;
+use Illuminate\Support\Facades\Validator;
+
+class ApiActivityTypeController extends Controller
+{
+    public function index()
+    {
+        $activityTypes = ActivityType::get();
+        if ($activityTypes->count() > 0) {
+            return ActivityTypeResource::collection($activityTypes);
+        } else {
+            return response()->json(['message' => 'No activity types found'], 200);
+        }
+    }
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['message' => 'Validation failed', 'errors' => $validator->errors()], 422);
+        }
+
+        $activityType = ActivityType::create([
+            'name' => $request->name,
+        ]);
+
+        return response()->json(['message' => 'Activity type created successfully', 'data' => new ActivityTypeResource($activityType)], 201);
+    }
+
+    public function show(ActivityType $activityType)
+    {
+        return new ActivityTypeResource($activityType);
+    }
+
+    public function update(Request $request, ActivityType $activityType)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['message' => 'Validation failed', 'errors' => $validator->errors()], 422);
+        }
+
+        $activityType->update([
+            'name' => $request->name,
+        ]);
+
+        return response()->json(['message' => 'Activity type updated successfully', 'data' => new ActivityTypeResource($activityType)], 201);
+    }
+
+    public function destroy(ActivityType $activityType)
+    {
+        $activityType->delete();
+        return response()->json(['message' => 'Activity type deleted successfully'], 200);
+    }
+}
