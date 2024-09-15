@@ -12,7 +12,20 @@ use OpenApi\Annotations as OA;
 
 class ApiServiceCategoryController extends Controller
 {
-
+/**
+ * @OA\Get(
+ *     path="/api/service-categories",
+ *     summary="Get a list of service categories",
+ *     @OA\Parameter(
+ *         name="limit",
+ *         in="query",
+ *         description="Limit the number of results",
+ *         required=false,
+ *         @OA\Schema(type="integer")
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation")
+ * )
+ */
     public function index(Request $request)
     {
         $limit = $request->query('limit', null);

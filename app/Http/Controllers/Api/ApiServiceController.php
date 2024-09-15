@@ -9,6 +9,20 @@ use App\Http\Resources\ServiceResource;
 use Illuminate\Support\Facades\Validator;
 use OpenApi\Annotations as OA;
 
+/**
+ * @OA\Get(
+ *     path="/api/services",
+ *     summary="Get a list of services",
+ *     @OA\Parameter(
+ *         name="limit",
+ *         in="query",
+ *         description="Limit the number of results",
+ *         required=false,
+ *         @OA\Schema(type="integer")
+ *     ),
+ *     @OA\Response(response=200, description="Successful operation")
+ * )
+ */
 class ApiServiceController extends Controller
 {
 

@@ -27,7 +27,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":2,"title":"mango","description":"this is a mango","created_at":"2024-09-15T12:51:27.000000Z","updated_at":"2024-09-15T12:51:27.000000Z"}]}'
+        content: '{"data":[{"id":8,"title":"mango","description":"this is a mango","created_at":"2024-09-15T20:12:29.000000Z","updated_at":"2024-09-15T20:12:29.000000Z"},{"id":7,"title":"mango","description":"this is a mango","created_at":"2024-09-15T20:12:28.000000Z","updated_at":"2024-09-15T20:12:28.000000Z"},{"id":6,"title":"mango","description":"this is a mango","created_at":"2024-09-15T20:12:27.000000Z","updated_at":"2024-09-15T20:12:27.000000Z"},{"id":5,"title":"mango","description":"this is a mango","created_at":"2024-09-15T20:12:26.000000Z","updated_at":"2024-09-15T20:12:26.000000Z"},{"id":4,"title":"mango","description":"this is a mango","created_at":"2024-09-15T20:12:25.000000Z","updated_at":"2024-09-15T20:12:25.000000Z"},{"id":3,"title":"mango","description":"this is a mango","created_at":"2024-09-15T20:12:23.000000Z","updated_at":"2024-09-15T20:12:23.000000Z"},{"id":2,"title":"mango","description":"this is a mango","created_at":"2024-09-15T12:51:27.000000Z","updated_at":"2024-09-15T12:51:27.000000Z"}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -65,7 +65,7 @@ endpoints:
         name: title
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: xp
+        example: zgeayqfdwitehop
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -74,14 +74,14 @@ endpoints:
         name: description
         description: ''
         required: true
-        example: 'Dignissimos officia vel illo minima at animi.'
+        example: 'At magni velit et excepturi velit quis id.'
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      title: xp
-      description: 'Dignissimos officia vel illo minima at animi.'
+      title: zgeayqfdwitehop
+      description: 'At magni velit et excepturi velit quis id.'
     fileParameters: []
     responses: []
     responseFields: []
@@ -175,7 +175,7 @@ endpoints:
         name: title
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: kvh
+        example: bvcawxbgu
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -184,14 +184,14 @@ endpoints:
         name: description
         description: ''
         required: true
-        example: 'Doloremque praesentium voluptatem et error natus.'
+        example: 'Aliquam deleniti rerum eaque nisi libero illo rerum.'
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      title: kvh
-      description: 'Doloremque praesentium voluptatem et error natus.'
+      title: bvcawxbgu
+      description: 'Aliquam deleniti rerum eaque nisi libero illo rerum.'
     fileParameters: []
     responses: []
     responseFields: []
@@ -304,7 +304,7 @@ endpoints:
         name: title
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: ksrgfsyiarekdcjiaeje
+        example: fk
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -313,7 +313,7 @@ endpoints:
         name: description
         description: ''
         required: true
-        example: 'Molestias repellendus dolorem at est voluptas.'
+        example: 'Eum sint voluptatibus repellendus consequuntur.'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -322,15 +322,15 @@ endpoints:
         name: service_category_id
         description: ''
         required: true
-        example: atque
+        example: nobis
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      title: ksrgfsyiarekdcjiaeje
-      description: 'Molestias repellendus dolorem at est voluptas.'
-      service_category_id: atque
+      title: fk
+      description: 'Eum sint voluptatibus repellendus consequuntur.'
+      service_category_id: nobis
     fileParameters: []
     responses: []
     responseFields: []
@@ -360,13 +360,13 @@ endpoints:
         name: id
         description: 'The ID of the service.'
         required: true
-        example: 12
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 12
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -410,13 +410,13 @@ endpoints:
         name: id
         description: 'The ID of the service.'
         required: true
-        example: 18
+        example: 7
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 18
+      id: 7
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -424,7 +424,7 @@ endpoints:
         name: title
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: iercmvecpteijggx
+        example: mnmlfycbnvrmy
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -433,7 +433,7 @@ endpoints:
         name: description
         description: ''
         required: true
-        example: 'Id at ea commodi.'
+        example: 'Esse quae ut et possimus.'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -442,15 +442,15 @@ endpoints:
         name: service_category_id
         description: ''
         required: true
-        example: magni
+        example: sit
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      title: iercmvecpteijggx
-      description: 'Id at ea commodi.'
-      service_category_id: magni
+      title: mnmlfycbnvrmy
+      description: 'Esse quae ut et possimus.'
+      service_category_id: sit
     fileParameters: []
     responses: []
     responseFields: []
@@ -480,13 +480,13 @@ endpoints:
         name: id
         description: 'The ID of the service.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 16
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -563,13 +563,13 @@ endpoints:
         name: name
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: pueyoz
+        example: mnla
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: pueyoz
+      name: mnla
     fileParameters: []
     responses: []
     responseFields: []
@@ -599,13 +599,13 @@ endpoints:
         name: id
         description: 'The ID of the service category.'
         required: true
-        example: 11
+        example: 12
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 11
+      id: 12
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -649,13 +649,13 @@ endpoints:
         name: id
         description: 'The ID of the service category.'
         required: true
-        example: 2
+        example: 7
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 2
+      id: 7
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -663,13 +663,13 @@ endpoints:
         name: name
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: yhvuhhcwkzqujkp
+        example: xekuafumqorhn
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: yhvuhhcwkzqujkp
+      name: xekuafumqorhn
     fileParameters: []
     responses: []
     responseFields: []
@@ -699,13 +699,13 @@ endpoints:
         name: id
         description: 'The ID of the service category.'
         required: true
-        example: 5
+        example: 4
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 5
+      id: 4
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -782,7 +782,7 @@ endpoints:
         name: title
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: ypiusci
+        example: wzdwvhsol
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -791,7 +791,7 @@ endpoints:
         name: activity_date
         description: 'Must be a valid date.'
         required: true
-        example: '2024-09-15T20:10:45'
+        example: '2024-09-15T20:24:31'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -800,7 +800,7 @@ endpoints:
         name: description
         description: ''
         required: true
-        example: 'Unde voluptatibus tempore molestiae.'
+        example: 'Quia dolores non excepturi nostrum in.'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -809,16 +809,16 @@ endpoints:
         name: activity_type_id
         description: ''
         required: true
-        example: qui
+        example: sunt
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      title: ypiusci
-      activity_date: '2024-09-15T20:10:45'
-      description: 'Unde voluptatibus tempore molestiae.'
-      activity_type_id: qui
+      title: wzdwvhsol
+      activity_date: '2024-09-15T20:24:31'
+      description: 'Quia dolores non excepturi nostrum in.'
+      activity_type_id: sunt
     fileParameters: []
     responses: []
     responseFields: []
@@ -848,13 +848,13 @@ endpoints:
         name: id
         description: 'The ID of the activity.'
         required: true
-        example: 5
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 5
+      id: 3
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -898,13 +898,13 @@ endpoints:
         name: id
         description: 'The ID of the activity.'
         required: true
-        example: 18
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 18
+      id: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -912,7 +912,7 @@ endpoints:
         name: title
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: sfmrbgklasketmulha
+        example: dshptspiqdznyu
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -921,7 +921,7 @@ endpoints:
         name: activity_date
         description: 'Must be a valid date.'
         required: true
-        example: '2024-09-15T20:10:45'
+        example: '2024-09-15T20:24:31'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -930,7 +930,7 @@ endpoints:
         name: description
         description: ''
         required: true
-        example: 'Incidunt velit eos at beatae.'
+        example: 'Vel autem iure at qui illo asperiores.'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -939,16 +939,16 @@ endpoints:
         name: activity_type_id
         description: ''
         required: true
-        example: quia
+        example: minus
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      title: sfmrbgklasketmulha
-      activity_date: '2024-09-15T20:10:45'
-      description: 'Incidunt velit eos at beatae.'
-      activity_type_id: quia
+      title: dshptspiqdznyu
+      activity_date: '2024-09-15T20:24:31'
+      description: 'Vel autem iure at qui illo asperiores.'
+      activity_type_id: minus
     fileParameters: []
     responses: []
     responseFields: []
@@ -1061,13 +1061,13 @@ endpoints:
         name: name
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: klvosnbdprlbxycbftdlnq
+        example: hbkdrsivhqjv
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: klvosnbdprlbxycbftdlnq
+      name: hbkdrsivhqjv
     fileParameters: []
     responses: []
     responseFields: []
@@ -1097,13 +1097,13 @@ endpoints:
         name: id
         description: 'The ID of the activity type.'
         required: true
-        example: 6
+        example: 18
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 6
+      id: 18
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1147,13 +1147,13 @@ endpoints:
         name: id
         description: 'The ID of the activity type.'
         required: true
-        example: 9
+        example: 4
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 9
+      id: 4
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1161,13 +1161,13 @@ endpoints:
         name: name
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: vswqqltey
+        example: cxh
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: vswqqltey
+      name: cxh
     fileParameters: []
     responses: []
     responseFields: []
@@ -1197,13 +1197,13 @@ endpoints:
         name: id
         description: 'The ID of the activity type.'
         required: true
-        example: 1
+        example: 7
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 7
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1280,7 +1280,7 @@ endpoints:
         name: photo_url
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: 'http://ohara.com/'
+        example: 'http://www.oconner.com/aut-reprehenderit-et-est-quam-ex-quia'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1289,7 +1289,7 @@ endpoints:
         name: photoable_id
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: qtucbngsmwemojepm
+        example: kuueukpflcirwwgrcmeur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1298,15 +1298,15 @@ endpoints:
         name: photoable_type
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: mxsuapnlcf
+        example: dbcpm
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      photo_url: 'http://ohara.com/'
-      photoable_id: qtucbngsmwemojepm
-      photoable_type: mxsuapnlcf
+      photo_url: 'http://www.oconner.com/aut-reprehenderit-et-est-quam-ex-quia'
+      photoable_id: kuueukpflcirwwgrcmeur
+      photoable_type: dbcpm
     fileParameters: []
     responses: []
     responseFields: []
@@ -1336,13 +1336,13 @@ endpoints:
         name: id
         description: 'The ID of the photo.'
         required: true
-        example: 1
+        example: 13
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 13
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1386,13 +1386,13 @@ endpoints:
         name: id
         description: 'The ID of the photo.'
         required: true
-        example: 19
+        example: 18
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 19
+      id: 18
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1400,7 +1400,7 @@ endpoints:
         name: photo_url
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: 'http://www.skiles.com/quia-placeat-voluptatem-tempore-nesciunt-velit-et'
+        example: 'http://koepp.com/non-sequi-dolorum-aut-ut-consequatur-consequuntur-aut'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1409,7 +1409,7 @@ endpoints:
         name: photoable_id
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: qkcsv
+        example: brrdjygwsfzwarzsngdpfktxf
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1418,15 +1418,15 @@ endpoints:
         name: photoable_type
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: drzmsfbqoqgtxbqjoidi
+        example: mezjjgyxilxayvwl
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      photo_url: 'http://www.skiles.com/quia-placeat-voluptatem-tempore-nesciunt-velit-et'
-      photoable_id: qkcsv
-      photoable_type: drzmsfbqoqgtxbqjoidi
+      photo_url: 'http://koepp.com/non-sequi-dolorum-aut-ut-consequatur-consequuntur-aut'
+      photoable_id: brrdjygwsfzwarzsngdpfktxf
+      photoable_type: mezjjgyxilxayvwl
     fileParameters: []
     responses: []
     responseFields: []
@@ -1456,13 +1456,13 @@ endpoints:
         name: id
         description: 'The ID of the photo.'
         required: true
-        example: 4
+        example: 13
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 4
+      id: 13
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1539,7 +1539,7 @@ endpoints:
         name: name
         description: 'Must not be greater than 255 characters.'
         required: false
-        example: dmcwduvfhwpmvv
+        example: ilvvb
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1548,7 +1548,7 @@ endpoints:
         name: number
         description: 'Must not be greater than 255 characters.'
         required: false
-        example: czxsrdnzboddzqjrqsfrdzm
+        example: pydphscy
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1557,7 +1557,7 @@ endpoints:
         name: description
         description: ''
         required: true
-        example: 'Possimus cupiditate non quia quidem tempora et accusantium.'
+        example: 'Doloremque optio perspiciatis sit non cupiditate tempora qui.'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1566,16 +1566,16 @@ endpoints:
         name: status
         description: 'Must not be greater than 255 characters.'
         required: false
-        example: kccjjgijkge
+        example: hnwysyhbkzlwdo
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: dmcwduvfhwpmvv
-      number: czxsrdnzboddzqjrqsfrdzm
-      description: 'Possimus cupiditate non quia quidem tempora et accusantium.'
-      status: kccjjgijkge
+      name: ilvvb
+      number: pydphscy
+      description: 'Doloremque optio perspiciatis sit non cupiditate tempora qui.'
+      status: hnwysyhbkzlwdo
     fileParameters: []
     responses: []
     responseFields: []
@@ -1669,7 +1669,7 @@ endpoints:
         name: name
         description: 'Must not be greater than 255 characters.'
         required: false
-        example: ohizvoihgqgvtbxgck
+        example: gxfnbxvrnwmvzmqksc
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1678,7 +1678,7 @@ endpoints:
         name: number
         description: 'Must not be greater than 255 characters.'
         required: false
-        example: cqxxuhdtpithaqwyferiac
+        example: ewkdwmbeuorhltqcfgzhgxypl
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1687,7 +1687,7 @@ endpoints:
         name: description
         description: ''
         required: false
-        example: 'Consequatur quibusdam quibusdam omnis est veniam.'
+        example: 'Odit magni ut consequatur quis suscipit ullam corrupti.'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1696,16 +1696,16 @@ endpoints:
         name: status
         description: 'Must not be greater than 255 characters.'
         required: false
-        example: jeoz
+        example: xcbwuiefmrdnnhvjazdzfgf
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: ohizvoihgqgvtbxgck
-      number: cqxxuhdtpithaqwyferiac
-      description: 'Consequatur quibusdam quibusdam omnis est veniam.'
-      status: jeoz
+      name: gxfnbxvrnwmvzmqksc
+      number: ewkdwmbeuorhltqcfgzhgxypl
+      description: 'Odit magni ut consequatur quis suscipit ullam corrupti.'
+      status: xcbwuiefmrdnnhvjazdzfgf
     fileParameters: []
     responses: []
     responseFields: []
@@ -1818,7 +1818,7 @@ endpoints:
         name: decision_id
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: tucgatpizcuzox
+        example: iwnukjq
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1827,7 +1827,7 @@ endpoints:
         name: decision_date
         description: 'Must be a valid date.'
         required: true
-        example: '2024-09-15T20:10:45'
+        example: '2024-09-15T20:24:31'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1836,7 +1836,7 @@ endpoints:
         name: title
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: hfbtdxcp
+        example: vlhvc
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1845,16 +1845,16 @@ endpoints:
         name: description
         description: ''
         required: true
-        example: 'Earum est cupiditate quod ad culpa.'
+        example: 'Aut error perferendis aperiam consequatur molestias a.'
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      decision_id: tucgatpizcuzox
-      decision_date: '2024-09-15T20:10:45'
-      title: hfbtdxcp
-      description: 'Earum est cupiditate quod ad culpa.'
+      decision_id: iwnukjq
+      decision_date: '2024-09-15T20:24:31'
+      title: vlhvc
+      description: 'Aut error perferendis aperiam consequatur molestias a.'
     fileParameters: []
     responses: []
     responseFields: []
@@ -1884,13 +1884,13 @@ endpoints:
         name: id
         description: 'The ID of the decision.'
         required: true
-        example: 5
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 5
+      id: 3
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1934,13 +1934,13 @@ endpoints:
         name: id
         description: 'The ID of the decision.'
         required: true
-        example: 18
+        example: 6
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 18
+      id: 6
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1948,7 +1948,7 @@ endpoints:
         name: decision_id
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: ydnuzalyglkfuuald
+        example: himbnenrkolssxlnzgrwzvtl
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1957,7 +1957,7 @@ endpoints:
         name: decision_date
         description: 'Must be a valid date.'
         required: true
-        example: '2024-09-15T20:10:45'
+        example: '2024-09-15T20:24:31'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1966,7 +1966,7 @@ endpoints:
         name: title
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: h
+        example: pbpfszuzdimlidsotzkqsxrl
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1975,16 +1975,16 @@ endpoints:
         name: description
         description: ''
         required: true
-        example: 'Ea error dicta sed blanditiis incidunt occaecati odio.'
+        example: 'Ipsam voluptatem asperiores ut explicabo impedit iure.'
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      decision_id: ydnuzalyglkfuuald
-      decision_date: '2024-09-15T20:10:45'
-      title: h
-      description: 'Ea error dicta sed blanditiis incidunt occaecati odio.'
+      decision_id: himbnenrkolssxlnzgrwzvtl
+      decision_date: '2024-09-15T20:24:31'
+      title: pbpfszuzdimlidsotzkqsxrl
+      description: 'Ipsam voluptatem asperiores ut explicabo impedit iure.'
     fileParameters: []
     responses: []
     responseFields: []
@@ -2014,13 +2014,13 @@ endpoints:
         name: id
         description: 'The ID of the decision.'
         required: true
-        example: 5
+        example: 13
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 5
+      id: 13
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
