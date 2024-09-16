@@ -18,6 +18,7 @@ class NewsResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
+            'photos' => PhotoResource::collection($this->whenLoaded('photos')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

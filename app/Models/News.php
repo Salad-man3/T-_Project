@@ -14,4 +14,10 @@ class News extends Model
         'title',
         'description',
     ];
+    
+    public function photos()
+    {
+        return $this->morphMany(Photo::class, 'photoable');
+    }
 }
+

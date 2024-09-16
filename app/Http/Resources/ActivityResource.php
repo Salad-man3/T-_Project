@@ -22,6 +22,7 @@ class ActivityResource extends JsonResource
             'description' => $this->description,
             'activity_type_id' => $this->activity_type_id,
             'activity_type' => new ActivityTypeResource($this->whenLoaded('activityType')),
+            'photos' => PhotoResource::collection($this->whenLoaded('photos')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

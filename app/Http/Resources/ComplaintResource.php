@@ -20,6 +20,7 @@ class ComplaintResource extends JsonResource
             'number' => $this->number,
             'description' => $this->description,
             'status' => $this->status,
+            'photos' => PhotoResource::collection($this->whenLoaded('photos')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

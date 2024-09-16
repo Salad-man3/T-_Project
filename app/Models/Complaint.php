@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Complaint extends Model
 {
-    use HasFactory ,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -16,4 +16,9 @@ class Complaint extends Model
         'description',
         'status',
     ];
+    
+    public function photos()
+    {
+        return $this->morphMany(Photo::class, 'photoable');
+    }
 }

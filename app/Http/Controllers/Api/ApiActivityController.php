@@ -39,6 +39,8 @@ class ApiActivityController extends Controller
             'activity_date' => 'required|date',
             'description' => 'required|string',
             'activity_type_id' => 'required|exists:activity_types,id',
+            'photos' => 'nullable|array',
+            'photos.*' => 'url|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -52,13 +54,22 @@ class ApiActivityController extends Controller
             'activity_type_id' => $request->activity_type_id,
         ]);
 
+        if ($request->has('photos')) {
+            foreach ($request->photos as $photoUrl) {
+                $activity->photos()->create(['photo_url' => $photoUrl]);
+            }
+        }
+
+        $activity->load('photos');
+
+
         return response()->json(['message' => 'Activity created successfully', 'data' => new ActivityResource($activity)], 201);
     }
 
 
     public function show(Activity $activity)
     {
-        return new ActivityResource($activity);
+        return new ActivityResource($activity->load('photos'));
     }
 
 
@@ -69,6 +80,8 @@ class ApiActivityController extends Controller
             'activity_date' => 'required|date',
             'description' => 'required|string',
             'activity_type_id' => 'required|exists:activity_types,id',
+            'photos' => 'nullable|array',
+            'photos.*' => 'url|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -81,6 +94,9 @@ class ApiActivityController extends Controller
             'description' => $request->description,
             'activity_type_id' => $request->activity_type_id,
         ]);
+
+        $activity->load('photos');
+
 
         return response()->json(['message' => 'Activity updated successfully', 'data' => new ActivityResource($activity)], 201);
     }

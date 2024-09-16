@@ -38,6 +38,8 @@ class ApiNewsController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
+            'photos' => 'nullable|array',
+            'photos.*' => 'url|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -49,13 +51,21 @@ class ApiNewsController extends Controller
             'description' => $request->description,
         ]);
 
+        if ($request->has('photos')) {
+            foreach ($request->photos as $photoUrl) {
+                $news->photos()->create(['photo_url' => $photoUrl]);
+            }
+        }
+
+        $news->load('photos');
+
         return response()->json(['message' => 'News created successfully', 'data' => new NewsResource($news)], 201);
     }
 
 
     public function show(News $news)
     {
-        return new NewsResource($news);
+        return new NewsResource($news->load('photos'));
     }
 
 
@@ -64,6 +74,8 @@ class ApiNewsController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
+            'photos' => 'nullable|array',
+            'photos.*' => 'url|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -74,6 +86,9 @@ class ApiNewsController extends Controller
             'title' => $request->title,
             'description' => $request->description,
         ]);
+
+        $news->load('photos');
+
 
         return response()->json(['message' => 'News Updated successfully', 'data' => new NewsResource($news)], 201);
     }

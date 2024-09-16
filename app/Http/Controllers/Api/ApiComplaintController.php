@@ -38,6 +38,8 @@ class ApiComplaintController extends Controller
             'number' => 'string|max:255',
             'description' => 'required|string',
             'status' => 'string|max:255',
+            'photos' => 'nullable|array',
+            'photos.*' => 'url|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -51,13 +53,22 @@ class ApiComplaintController extends Controller
             'status' => $request->status,
         ]);
 
+        if ($request->has('photos')) {
+            foreach ($request->photos as $photoUrl) {
+                $complaint->photos()->create(['photo_url' => $photoUrl]);
+            }
+        }
+
+        $complaint->load('photos');
+
+
         return response()->json(['message' => 'Complaint created successfully', 'data' => new ComplaintResource($complaint)], 201);
     }
 
 
     public function show(Complaint $complaint)
     {
-        return new ComplaintResource($complaint);
+        return new ComplaintResource($complaint->load('photos'));
     }
 
     public function update(Request $request, Complaint $complaint)
@@ -67,6 +78,8 @@ class ApiComplaintController extends Controller
             'number' => 'string|max:255',
             'description' => 'string',
             'status' => 'string|max:255',
+            'photos' => 'nullable|array',
+            'photos.*' => 'url|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -79,6 +92,8 @@ class ApiComplaintController extends Controller
             'description' => $request->description,
             'status' => $request->status,
         ]);
+        
+        $complaint->load('photos');
 
         return response()->json(['message' => 'Complaint updated successfully', 'data' => new ComplaintResource($complaint)], 201);
     }
@@ -113,4 +128,3 @@ class ApiComplaintController extends Controller
         return response()->json(['message' => 'Complaint permanently deleted'], 200);
     }
 }
-

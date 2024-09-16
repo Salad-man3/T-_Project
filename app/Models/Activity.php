@@ -24,4 +24,9 @@ class Activity extends Model
     {
         return $this->belongsTo(ActivityType::class);
     }
+
+    public function photos()
+    {
+        return $this->morphMany(Photo::class, 'photoable');
+    }
 }
