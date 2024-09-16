@@ -17,6 +17,7 @@ class Decision extends Model
     ];
 
     protected $casts = [
+        'decision_id' => 'integer',
         'decision_date' => 'date',
     ];
 }

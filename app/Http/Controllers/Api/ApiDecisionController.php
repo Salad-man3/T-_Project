@@ -35,7 +35,7 @@ class ApiDecisionController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'decision_id' => 'required|string|max:255',
+            'decision_id' => 'required|integer',
             'decision_date' => 'required|date',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -46,7 +46,7 @@ class ApiDecisionController extends Controller
         }
 
         $decision = Decision::create([
-            'decision_id' => $request->decision_id,
+            'decision_id' => (int) $request->decision_id,
             'decision_date' => $request->decision_date,
             'title' => $request->title,
             'description' => $request->description,
@@ -64,7 +64,7 @@ class ApiDecisionController extends Controller
     public function update(Request $request, Decision $decision)
     {
         $validator = Validator::make($request->all(), [
-            'decision_id' => 'required|string|max:255',
+            'decision_id' => 'required|integer',
             'decision_date' => 'required|date',
             'title' => 'required|string|max:255',
             'description' => 'required|string',

@@ -12,7 +12,7 @@ class DecisionFactory extends Factory
     public function definition()
     {
         return [
-            'decision_id' => $this->faker->unique()->uuid(),
+            'decision_id' => $this->faker->unique()->numberBetween(1000, 9999),
             'decision_date' => $this->faker->date(),
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
