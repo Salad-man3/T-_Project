@@ -11,20 +11,7 @@ use OpenApi\Annotations as OA;
 
 class ApiActivityController extends Controller
 {
-/**
- * @OA\Get(
- *     path="/api/activity",
- *     summary="Get a list of activities",
- *     @OA\Parameter(
- *         name="limit",
- *         in="query",
- *         description="Limit the number of results",
- *         required=false,
- *         @OA\Schema(type="integer")
- *     ),
- *     @OA\Response(response=200, description="Successful operation")
- * )
- */
+
     public function index(Request $request)
     {
         $limit = $request->query('limit', null);

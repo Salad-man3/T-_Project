@@ -9,20 +9,7 @@ use App\Http\Resources\ServiceResource;
 use Illuminate\Support\Facades\Validator;
 use OpenApi\Annotations as OA;
 
-/**
- * @OA\Get(
- *     path="/api/services",
- *     summary="Get a list of services",
- *     @OA\Parameter(
- *         name="limit",
- *         in="query",
- *         description="Limit the number of results",
- *         required=false,
- *         @OA\Schema(type="integer")
- *     ),
- *     @OA\Response(response=200, description="Successful operation")
- * )
- */
+
 class ApiServiceController extends Controller
 {
 
@@ -37,8 +24,11 @@ class ApiServiceController extends Controller
         }
 
         $services = $query->get();
-
-        return ServiceResource::collection($services);
+        if ($services->count() > 0) {
+            return ServiceResource::collection($services);
+        } else {
+            return response()->json(['message' => 'No services found'], 200);
+        }
     }
 
 

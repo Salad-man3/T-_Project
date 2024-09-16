@@ -19,8 +19,8 @@ Route::apiResource('service-categories', ApiServiceCategoryController::class);
 Route::apiResource('activity', ApiActivityController::class);
 Route::apiResource('activity-type', ApiActivityTypeController::class);
 Route::apiResource('photo', ApiPhotoController::class);
-Route::apiResource('complaint', ApiComplaintController::class);
 Route::apiResource('decision', ApiDecisionController::class);
+Route::apiResource('complaint', ApiComplaintController::class);
 
 Route::get('complaints/trashed', [ApiComplaintController::class, 'trashed']);
 Route::post('complaints/{id}/restore', [ApiComplaintController::class, 'restore']);

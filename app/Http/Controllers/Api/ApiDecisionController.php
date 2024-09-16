@@ -10,20 +10,6 @@ use Illuminate\Support\Facades\Validator;
 use OpenApi\Annotations as OA;
 
 
-/**
- * @OA\Get(
- *     path="/api/decision",
- *     summary="Get a list of decisions",
- *     @OA\Parameter(
- *         name="limit",
- *         in="query",
- *         description="Limit the number of results",
- *         required=false,
- *         @OA\Schema(type="integer")
- *     ),
- *     @OA\Response(response=200, description="Successful operation")
- * )
- */
 class ApiDecisionController extends Controller
 {
 
