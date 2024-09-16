@@ -54,6 +54,10 @@ This project is built using the Laravel framework, leveraging its powerful featu
 ### Usage
 - Access the application at `http://localhost:8000`
 - Access the api documentation by downloading the postman collection and environment files from the repository.
+- Run the seeder to populate the database with data:
+   ```sh
+   php artisan db:seed
+   ```
 
 
 
