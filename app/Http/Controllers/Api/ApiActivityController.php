@@ -63,7 +63,7 @@ class ApiActivityController extends Controller
         $activity->load('photos');
 
 
-        return response()->json(['message' => 'Activity created successfully', 'data' => new ActivityResource($activity)], 201);
+        return response()->json(['message' => 'Activity created successfully'], 201);
     }
 
 
@@ -98,7 +98,7 @@ class ApiActivityController extends Controller
         $activity->load('photos');
 
 
-        return response()->json(['message' => 'Activity updated successfully', 'data' => new ActivityResource($activity)], 201);
+        return response()->json(['message' => 'Activity updated successfully'], 201);
     }
 
 

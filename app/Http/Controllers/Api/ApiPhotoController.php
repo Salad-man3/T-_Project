@@ -50,7 +50,7 @@ class ApiPhotoController extends Controller
             'photoable_type' => $request->photoable_type,
         ]);
 
-        return response()->json(['message' => 'Photo created successfully', 'data' => new PhotoResource($photo)], 201);
+        return response()->json(['message' => 'Photo created successfully'], 201);
     }
 
 
@@ -77,7 +77,7 @@ class ApiPhotoController extends Controller
             'photoable_type' => $request->photoable_type,
         ]);
 
-        return response()->json(['message' => 'Photo updated successfully', 'data' => new PhotoResource($photo)], 201);
+        return response()->json(['message' => 'Photo updated successfully'], 201);
     }
 
 

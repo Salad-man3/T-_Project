@@ -16,6 +16,12 @@ class Complaint extends Model
         'description',
         'status',
     ];
+
+
+
+    protected $attributes = [
+        'status' => 'unresolved',
+    ];
     
     public function photos()
     {

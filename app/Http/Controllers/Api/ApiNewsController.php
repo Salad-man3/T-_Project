@@ -59,7 +59,7 @@ class ApiNewsController extends Controller
 
         $news->load('photos');
 
-        return response()->json(['message' => 'News created successfully', 'data' => new NewsResource($news)], 201);
+        return response()->json(['message' => 'News created successfully'], 201);
     }
 
 
@@ -90,7 +90,7 @@ class ApiNewsController extends Controller
         $news->load('photos');
 
 
-        return response()->json(['message' => 'News Updated successfully', 'data' => new NewsResource($news)], 201);
+        return response()->json(['message' => 'News Updated successfully'], 201);
     }
 
 

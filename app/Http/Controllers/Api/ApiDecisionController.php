@@ -52,7 +52,7 @@ class ApiDecisionController extends Controller
             'description' => $request->description,
         ]);
 
-        return response()->json(['message' => 'Decision created successfully', 'data' => new DecisionResource($decision)], 201);
+        return response()->json(['message' => 'Decision created successfully'], 201);
     }
 
 
@@ -81,7 +81,7 @@ class ApiDecisionController extends Controller
             'description' => $request->description,
         ]);
 
-        return response()->json(['message' => 'Decision updated successfully', 'data' => new DecisionResource($decision)], 201);
+        return response()->json(['message' => 'Decision updated successfully'], 201);
     }
 
 

@@ -49,7 +49,7 @@ class ApiServiceController extends Controller
             'description' => $request->description,
             'service_category_id'=> $request->service_category_id,
         ]);
-        return response()->json(['message' => 'Service created successfully', 'data' => new ServiceResource($service)], 201);
+        return response()->json(['message' => 'Service created successfully'], 201);
     }
 
 
@@ -77,7 +77,7 @@ class ApiServiceController extends Controller
             'service_category_id'=> $request->service_category_id,
         ]);
 
-        return response()->json(['message' => 'Service updated successfully', 'data' => new ServiceResource($service)], 201);
+        return response()->json(['message' => 'Service updated successfully'], 201);
 
     }
 

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('number');
             $table->text('description');
-            $table->string('status');
+            $table->string('status')->default('unresolved');
             $table->timestamps();
         });
     }

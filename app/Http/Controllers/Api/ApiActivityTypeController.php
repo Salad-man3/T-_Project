@@ -46,7 +46,7 @@ class ApiActivityTypeController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json(['message' => 'Activity type created successfully', 'data' => new ActivityTypeResource($activityType)], 201);
+        return response()->json(['message' => 'Activity type created successfully'], 201);
     }
 
     public function show(ActivityType $activityType)
@@ -69,7 +69,7 @@ class ApiActivityTypeController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json(['message' => 'Activity type updated successfully', 'data' => new ActivityTypeResource($activityType)], 201);
+        return response()->json(['message' => 'Activity type updated successfully'], 201);
     }
 
 

@@ -47,7 +47,7 @@ class ApiServiceCategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json(['message' => 'Service category created successfully', 'data' => new ServiceCategoryResource($serviceCategory)], 201);
+        return response()->json(['message' => 'Service category created successfully'], 201);
     }
 
 
@@ -70,7 +70,7 @@ class ApiServiceCategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json(['message' => 'Service category updated successfully', 'data' => new ServiceCategoryResource($serviceCategory)], 201);
+        return response()->json(['message' => 'Service category updated successfully'], 201);
     }
 
 

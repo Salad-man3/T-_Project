@@ -37,7 +37,6 @@ class ApiComplaintController extends Controller
             'name' => 'string|max:255',
             'number' => 'string|max:255',
             'description' => 'required|string',
-            'status' => 'string|max:255',
             'photos' => 'nullable|array',
             'photos.*' => 'url|max:255',
         ]);
@@ -50,7 +49,7 @@ class ApiComplaintController extends Controller
             'name' => $request->name,
             'number' => $request->number,
             'description' => $request->description,
-            'status' => $request->status,
+            'status' => 'unresolved', // Set default status
         ]);
 
         if ($request->has('photos')) {
@@ -61,8 +60,7 @@ class ApiComplaintController extends Controller
 
         $complaint->load('photos');
 
-
-        return response()->json(['message' => 'Complaint created successfully', 'data' => new ComplaintResource($complaint)], 201);
+        return response()->json(['message' => 'Complaint created successfully'], 201);
     }
 
 
@@ -92,10 +90,10 @@ class ApiComplaintController extends Controller
             'description' => $request->description,
             'status' => $request->status,
         ]);
-        
+
         $complaint->load('photos');
 
-        return response()->json(['message' => 'Complaint updated successfully', 'data' => new ComplaintResource($complaint)], 201);
+        return response()->json(['message' => 'Complaint updated successfully'], 201);
     }
 
 
