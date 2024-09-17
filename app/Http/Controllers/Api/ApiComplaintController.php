@@ -16,7 +16,7 @@ class ApiComplaintController extends Controller
     {
         $limit = $request->query('limit', null);
 
-        $query = Complaint::latest();
+        $query = Complaint::with('photos')->latest();
 
         if ($limit && is_numeric($limit)) {
             $query->limit($limit);
@@ -106,7 +106,7 @@ class ApiComplaintController extends Controller
 
     public function trashed()
     {
-        $trashedComplaints = Complaint::onlyTrashed()->get();
+        $trashedComplaints = Complaint::onlyTrashed()->with('photos')->get();
         return ComplaintResource::collection($trashedComplaints);
     }
 

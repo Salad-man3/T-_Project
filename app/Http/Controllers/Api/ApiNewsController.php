@@ -17,7 +17,7 @@ class ApiNewsController extends Controller
     {
         $limit = $request->query('limit', null);
 
-        $query = News::latest();
+        $query = News::with('photos')->latest();
 
         if ($limit && is_numeric($limit)) {
             $query->limit($limit);

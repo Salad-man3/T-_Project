@@ -18,7 +18,9 @@ class NewsResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'photos' => PhotoResource::collection($this->whenLoaded('photos')),
+            'photos' => $this->whenLoaded('photos', function () {
+                return $this->photos->pluck('photo_url');
+            }),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

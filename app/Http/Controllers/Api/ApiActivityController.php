@@ -16,7 +16,7 @@ class ApiActivityController extends Controller
     {
         $limit = $request->query('limit', null);
 
-        $query = Activity::latest();
+        $query = Activity::with('photos')->latest();
 
         if ($limit && is_numeric($limit)) {
             $query->limit($limit);
