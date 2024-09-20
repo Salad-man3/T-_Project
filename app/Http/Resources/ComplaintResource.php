@@ -21,7 +21,12 @@ class ComplaintResource extends JsonResource
             'description' => $this->description,
             'status' => $this->status,
             'photos' => $this->whenLoaded('photos', function () {
-                return $this->photos->pluck('photo_url');
+                return $this->photos->map(function ($photo) {
+                    return [
+                        'id' => $photo->id,
+                        'photo_url' => $photo->photo_url,
+                    ];
+                });
             }),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

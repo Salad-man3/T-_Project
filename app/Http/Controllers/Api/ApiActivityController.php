@@ -8,6 +8,8 @@ use App\Models\Activity;
 use App\Http\Resources\ActivityResource;
 use Illuminate\Support\Facades\Validator;
 use OpenApi\Annotations as OA;
+use App\Models\Photo;
+use Illuminate\Support\Facades\Log;
 
 class ApiActivityController extends Controller
 {
@@ -31,57 +33,73 @@ class ApiActivityController extends Controller
         }
     }
 
-
     public function store(Request $request)
     {
+        Log::info('Received request data:', $request->all());
+
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'activity_date' => 'required|date',
             'description' => 'required|string',
             'activity_type_id' => 'required|exists:activity_types,id',
+            'activity_date' => 'required|date',
             'photos' => 'nullable|array',
-            'photos.*' => 'url|max:255',
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
+            Log::warning('Validation failed:', ['errors' => $validator->errors()]);
             return response()->json(['message' => 'Validation failed', 'errors' => $validator->errors()], 422);
         }
 
-        $activity = Activity::create([
-            'title' => $request->title,
-            'activity_date' => $request->activity_date,
-            'description' => $request->description,
-            'activity_type_id' => $request->activity_type_id,
-        ]);
+        try {
+            $activity = Activity::create([
+                'title' => $request->input('title'),
+                'description' => $request->input('description'),
+                'activity_type_id' => $request->input('activity_type_id'),
+                'activity_date' => $request->input('activity_date'),
+            ]);
 
-        if ($request->has('photos')) {
-            foreach ($request->photos as $photoUrl) {
-                $activity->photos()->create(['photo_url' => $photoUrl]);
+            if ($request->hasFile('photos')) {
+                foreach ($request->file('photos') as $image) {
+                    Log::info('Photo found in request');
+                    $image_name = time() . '_' . $image->getClientOriginalName();
+                    $image->move(public_path('images'), $image_name);
+
+                    $photo = new Photo([
+                        'photoable_type' => Activity::class,
+                        'photoable_id' => $activity->id,
+                        'photo_url' => asset('images/' . $image_name)
+                    ]);
+                    $activity->photos()->save($photo);
+                    Log::info('Photo saved:', ['photo_url' => $photo->photo_url]);
+                }
+            } else {
+                Log::info('No photos found in request');
             }
+
+            $activity->load('photos');
+
+            return response()->json(['message' => 'Activity created successfully', 'activity' => new ActivityResource($activity)], 201);
+        } catch (\Exception $e) {
+            Log::error('Error creating activity: ' . $e->getMessage());
+            return response()->json(['message' => 'Error creating activity', 'error' => $e->getMessage()], 500);
         }
-
-        $activity->load('photos');
-
-
-        return response()->json(['message' => 'Activity created successfully'], 201);
     }
-
 
     public function show(Activity $activity)
     {
         return new ActivityResource($activity->load('photos'));
     }
 
-
     public function update(Request $request, Activity $activity)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|string|max:255',
-            'activity_date' => 'required|date',
-            'description' => 'required|string',
-            'activity_type_id' => 'required|exists:activity_types,id',
+            'title' => 'sometimes|required|string|max:255',
+            'description' => 'sometimes|required|string',
+            'activity_type_id' => 'sometimes|required|exists:activity_types,id',
+            'activity_date' => 'sometimes|required|date',
             'photos' => 'nullable|array',
-            'photos.*' => 'url|max:255',
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -89,18 +107,33 @@ class ApiActivityController extends Controller
         }
 
         $activity->update([
-            'title' => $request->title,
-            'activity_date' => $request->activity_date,
-            'description' => $request->description,
-            'activity_type_id' => $request->activity_type_id,
+            'title' => $request->input('title', $activity->title),
+            'description' => $request->input('description', $activity->description),
+            'activity_type_id' => $request->input('activity_type_id', $activity->activity_type_id),
+            'activity_date' => $request->input('activity_date', $activity->activity_date),
         ]);
 
-        $activity->load('photos');
+        if ($request->hasFile('photos')) {
+            // Remove existing photos
+            $activity->photos()->delete();
 
+            foreach ($request->file('photos') as $image) {
+                $image_name = time() . '_' . $image->getClientOriginalName();
+                $image->move(public_path('images'), $image_name);
 
-        return response()->json(['message' => 'Activity updated successfully'], 201);
+                $photo = new Photo([
+                    'photoable_type' => Activity::class,
+                    'photoable_id' => $activity->id,
+                    'photo_url' => asset('images/' . $image_name)
+                ]);
+                $activity->photos()->save($photo);
+            }
+        } else {
+            $activity->photos()->delete();
+        }
+
+        return response()->json(['message' => 'Activity updated successfully', 'activity' => new ActivityResource($activity->fresh()->load('photos'))], 200);
     }
-
 
     public function destroy(Activity $activity)
     {

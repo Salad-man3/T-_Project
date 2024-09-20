@@ -17,12 +17,12 @@ class Complaint extends Model
         'status',
     ];
 
-
+    protected $nullable = ['name', 'number'];
 
     protected $attributes = [
         'status' => 'unresolved',
     ];
-    
+
     public function photos()
     {
         return $this->morphMany(Photo::class, 'photoable');

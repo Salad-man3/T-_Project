@@ -13,10 +13,27 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->string('photo_url');
-            $table->unsignedBigInteger('photoable_id');
-            $table->string('photoable_type');
+            $table->morphs('photoable');
             $table->timestamps();
+        });
+
+        Schema::create('media', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->uuid('uuid')->nullable()->unique();
+            $table->morphs('model');
+            $table->string('collection_name');
+            $table->string('name');
+            $table->string('file_name');
+            $table->string('mime_type')->nullable();
+            $table->string('disk');
+            $table->string('conversions_disk')->nullable();
+            $table->unsignedBigInteger('size');
+            $table->json('manipulations');
+            $table->json('custom_properties');
+            $table->json('generated_conversions');
+            $table->json('responsive_images');
+            $table->unsignedInteger('order_column')->nullable();
+            $table->nullableTimestamps();
         });
     }
 
@@ -26,5 +43,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('photos');
+        Schema::dropIfExists('media');
     }
 };

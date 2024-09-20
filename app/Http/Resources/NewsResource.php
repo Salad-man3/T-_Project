@@ -13,16 +13,18 @@ class NewsResource extends JsonResource
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array
-    {
-        return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'description' => $this->description,
-            'photos' => $this->whenLoaded('photos', function () {
-                return $this->photos->pluck('photo_url');
-            }),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-        ];
-    }
+{
+    return [
+        'id' => $this->id,
+        'title' => $this->title,
+        'description' => $this->description,
+        'photos' => $this->whenLoaded('photos', function () {
+            return $this->photos->map(function ($photo) {
+                return $photo->photo_url ?? asset('images/' . basename($photo->getFirstMediaUrl('photos')));
+            });
+        }),
+        'created_at' => $this->created_at,
+        'updated_at' => $this->updated_at,
+    ];
+}
 }

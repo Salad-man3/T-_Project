@@ -16,7 +16,7 @@ class PhotoResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'photo_url' => $this->photo_url,
+            'photo_url' => $this->photo_url ?? asset('images/' . $this->getFirstMedia('photos')->file_name),
             'photoable_id' => $this->photoable_id,
             'photoable_type' => $this->photoable_type,
             'created_at' => $this->created_at,

@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Complaint;
 use App\Http\Resources\ComplaintResource;
 use Illuminate\Support\Facades\Validator;
-
+use OpenApi\Annotations as OA;
+use App\Models\Photo;
+use Illuminate\Support\Facades\Log;
 
 class ApiComplaintController extends Controller
 {
@@ -33,37 +35,61 @@ class ApiComplaintController extends Controller
 
     public function store(Request $request)
     {
+        Log::info('Received request data:', $request->all());
+
         $validator = Validator::make($request->all(), [
-            'name' => 'string|max:255',
-            'number' => 'string|max:255',
+            'name' => 'nullable|string|max:255',
+            'number' => 'nullable|string|max:255',
             'description' => 'required|string',
+            'status' => 'sometimes|string|in:unresolved,resolved',
             'photos' => 'nullable|array',
-            'photos.*' => 'url|max:255',
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
+            Log::warning('Validation failed:', ['errors' => $validator->errors()]);
             return response()->json(['message' => 'Validation failed', 'errors' => $validator->errors()], 422);
         }
 
-        $complaint = Complaint::create([
-            'name' => $request->name,
-            'number' => $request->number,
-            'description' => $request->description,
-            'status' => 'unresolved', // Set default status
-        ]);
+        try {
+            $complaint = Complaint::create([
+                'name' => $request->input('name'),
+                'number' => $request->input('number'),
+                'description' => $request->input('description'),
+                'status' => $request->input('status', 'unresolved'),
+            ]);
 
-        if ($request->has('photos')) {
-            foreach ($request->photos as $photoUrl) {
-                $complaint->photos()->create(['photo_url' => $photoUrl]);
+            if ($request->hasFile('photos')) {
+                foreach ($request->file('photos') as $image) {
+                    Log::info('Photo found in request');
+                    $image_name = time() . '_' . $image->getClientOriginalName();
+                    $image->move(public_path('images'), $image_name);
+
+                    $photo = new Photo([
+                        'photoable_type' => Complaint::class,
+                        'photoable_id' => $complaint->id,
+                        'photo_url' => asset('images/' . $image_name)
+                    ]);
+                    $complaint->photos()->save($photo);
+                    Log::info('Photo saved:', ['photo_url' => $photo->photo_url]);
+                }
+            } else {
+                Log::info('No photos found in request');
             }
+
+            $complaint->load('photos');
+
+            Log::info('Complaint created:', ['complaint' => $complaint->toArray()]);
+
+            return response()->json([
+                'message' => 'Complaint created successfully',
+                'complaint' => new ComplaintResource($complaint)
+            ], 201);
+        } catch (\Exception $e) {
+            Log::error('Error creating complaint: ' . $e->getMessage());
+            return response()->json(['message' => 'Error creating complaint', 'error' => $e->getMessage()], 500);
         }
-
-        $complaint->load('photos');
-
-        return response()->json(['message' => 'Complaint created successfully'], 201);
     }
-
-
     public function show(Complaint $complaint)
     {
         return new ComplaintResource($complaint->load('photos'));
@@ -72,12 +98,12 @@ class ApiComplaintController extends Controller
     public function update(Request $request, Complaint $complaint)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'string|max:255',
-            'number' => 'string|max:255',
-            'description' => 'string',
-            'status' => 'string|max:255',
+            'name' => 'sometimes|nullable|string|max:255',
+            'number' => 'sometimes|nullable|string|max:255',
+            'description' => 'sometimes|required|string',
+            'status' => 'sometimes|string|in:unresolved,resolved',
             'photos' => 'nullable|array',
-            'photos.*' => 'url|max:255',
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -85,24 +111,38 @@ class ApiComplaintController extends Controller
         }
 
         $complaint->update([
-            'name' => $request->name,
-            'number' => $request->number,
-            'description' => $request->description,
-            'status' => $request->status,
+            'name' => $request->input('name', $complaint->name),
+            'number' => $request->input('number', $complaint->number),
+            'description' => $request->input('description', $complaint->description),
+            'status' => $request->input('status', $complaint->status),
         ]);
 
-        $complaint->load('photos');
+        if ($request->hasFile('photos')) {
+            // Remove existing photos
+            $complaint->photos()->delete();
 
-        return response()->json(['message' => 'Complaint updated successfully'], 201);
+            foreach ($request->file('photos') as $image) {
+                $image_name = time() . '_' . $image->getClientOriginalName();
+                $image->move(public_path('images'), $image_name);
+
+                $photo = new Photo([
+                    'photoable_type' => Complaint::class,
+                    'photoable_id' => $complaint->id,
+                    'photo_url' => asset('images/' . $image_name)
+                ]);
+                $complaint->photos()->save($photo);
+            }
+        } else {
+            $complaint->photos()->delete();
+        }
+
+        return response()->json(['message' => 'Complaint updated successfully', 'complaint' => new ComplaintResource($complaint->fresh()->load('photos'))], 200);
     }
-
-
     public function destroy(Complaint $complaint)
     {
         $complaint->delete();
-        return response()->json(['message' => 'Complaint soft deleted successfully'], 200);
+        return response()->json(['message' => 'Complaint deleted successfully'], 200);
     }
-
 
     public function trashed()
     {
@@ -110,14 +150,12 @@ class ApiComplaintController extends Controller
         return ComplaintResource::collection($trashedComplaints);
     }
 
-
     public function restore($id)
     {
         $complaint = Complaint::withTrashed()->findOrFail($id);
         $complaint->restore();
         return response()->json(['message' => 'Complaint restored successfully'], 200);
     }
-
 
     public function forceDelete($id)
     {

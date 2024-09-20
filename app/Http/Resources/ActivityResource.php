@@ -14,16 +14,16 @@ class ActivityResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'activity_date' => $this->activity_date,
             'description' => $this->description,
             'activity_type_id' => $this->activity_type_id,
-            'activity_type' => new ActivityTypeResource($this->whenLoaded('activityType')),
+            'activity_date' => $this->activity_date,
             'photos' => $this->whenLoaded('photos', function () {
-                return $this->photos->pluck('photo_url');
+                return $this->photos->map(function ($photo) {
+                    return $photo->photo_url ?? asset('images/' . basename($photo->getFirstMediaUrl('photos')));
+                });
             }),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
