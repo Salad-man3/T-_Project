@@ -14,19 +14,49 @@ This project is built using the Laravel framework, leveraging its powerful featu
 - **Framework**: Laravel 11.x
 - **PHP Version**: 8.2+
 - **Database**: MySQL (assumed, based on typical Laravel setups)
-- **API Documentation**: Scribe for generating comprehensive API documentation
+- **API Documentation**: postman documentation for generating comprehensive API documentation
 - **Version Control**: Git
 - **API Testing**: Postman collection available for testing endpoints
 - **OpenAPI Specification**: Available for API integration
-- **Authentication**: None implemented 
+- **Authentication**: None implemented yet
 - **Frontend**: None (API-only project)
+
+### Installation Requirements
+
+Before you begin, ensure you have met the following requirements:
+
+1. **XAMPP**: Install XAMPP, which includes:
+   - Apache Web Server
+   - MySQL Database
+   - PHP (Version 8.2 or higher)
+
+2. **Composer**: The PHP dependency manager
+
+3. **Git**: For version control and cloning the repository
+
+4. **Node.js and npm**: For managing JavaScript dependencies
+
+5. **PHP Extensions**: Ensure the following PHP extensions are enabled in your php.ini file:
+   - BCMath PHP Extension
+   - Ctype PHP Extension
+   - JSON PHP Extension
+   - Mbstring PHP Extension
+   - OpenSSL PHP Extension
+   - PDO PHP Extension
+   - Tokenizer PHP Extension
+   - XML PHP Extension
+
+6. **Web Browser**: A modern web browser for testing and accessing the application
+
+
+Note: if you're using XAMPP, most of the server requirements (Apache, MySQL, PHP) are already included in the XAMPP package. Make sure to use the latest version of XAMPP that includes PHP 8.2 or higher.
 
 ### Installation
 1. Clone the repository:
    ```sh
    git clone <repository-url>
    ```
-2. Navigate to the project directory:for unix systems
+2. Navigate to the project directory : for unix systems
    ```sh
    cd <project-directory>
    ```
@@ -34,7 +64,7 @@ This project is built using the Laravel framework, leveraging its powerful featu
    ```sh
    composer install
    ```
-4. Copy `.env.example` to `.env` and configure your environment variables:for unix systems
+4. Copy `.env.example` to `.env` and configure your environment variables : for unix systems
    ```sh
    cp .env.example .env
    ```
@@ -53,11 +83,7 @@ This project is built using the Laravel framework, leveraging its powerful featu
 
 ### Usage
 - Access the application at `http://localhost:8000`
-- Access the api documentation by downloading the postman collection and environment files from the repository.
-- Run the seeder to populate the database with fake data:
-   ```sh
-   php artisan db:seed
-   ```
+- Access the api documentation by going to `https://documenter.getpostman.com/view/36834914/2sAXqtZfy1`.
 
 
 
