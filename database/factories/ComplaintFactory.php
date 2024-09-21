@@ -18,4 +18,17 @@ class ComplaintFactory extends Factory
             'status' => $this->faker->randomElement(['unresolved', 'in progress', 'resolved']),
         ];
     }
+
+    public function withPhoto()
+    {
+        return $this->afterCreating(function ($complaint) {
+            if (rand(0, 1)) {
+                $complaint->photos()->create([
+                    'photoable_type' => Complaint::class,
+                    'photoable_id' => $complaint->id,
+                    'photo_url' => asset('images/default_complaint_photo.jpg')
+                ]);
+            }
+        });
+    }
 }

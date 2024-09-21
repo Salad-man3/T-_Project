@@ -41,7 +41,7 @@ class ApiComplaintController extends Controller
             'name' => 'nullable|string|max:255',
             'number' => 'nullable|string|max:255',
             'description' => 'required|string',
-            'status' => 'sometimes|string|in:unresolved,resolved',
+            'status' => 'sometimes|string|in:unresolved,resolved,in_progress',
             'photos' => 'nullable|array',
             'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -101,7 +101,7 @@ class ApiComplaintController extends Controller
             'name' => 'sometimes|nullable|string|max:255',
             'number' => 'sometimes|nullable|string|max:255',
             'description' => 'sometimes|required|string',
-            'status' => 'sometimes|string|in:unresolved,resolved',
+            'status' => 'sometimes|string|in:unresolved,resolved,in_progress',
             'photos' => 'nullable|array',
             'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);

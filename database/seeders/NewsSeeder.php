@@ -10,10 +10,6 @@ class NewsSeeder extends Seeder
 {
     public function run(): void
     {
-        News::factory(20)->create()->each(function ($news) {
-            $news->photos()->saveMany(
-                Photo::factory(rand(1, 3))->make()
-            );
-        });
+        News::factory(20)->withPhoto()->create();
     }
 }

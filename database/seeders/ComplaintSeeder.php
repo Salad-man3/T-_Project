@@ -9,6 +9,6 @@ class ComplaintSeeder extends Seeder
 {
     public function run(): void
     {
-        Complaint::factory(50)->create();
+        Complaint::factory(20)->withPhoto()->create();
     }
 }

@@ -16,4 +16,17 @@ class NewsFactory extends Factory
             'description' => $this->faker->paragraph(),
         ];
     }
+
+    public function withPhoto()
+    {
+        return $this->afterCreating(function ($news) {
+            if (rand(0, 1)) {
+                $news->photos()->create([
+                    'photoable_type' => News::class,
+                    'photoable_id' => $news->id,
+                    'photo_url' => asset('images/default_news_photo.png')
+                ]);
+            }
+        });
+    }
 }

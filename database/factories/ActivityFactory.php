@@ -19,4 +19,17 @@ class ActivityFactory extends Factory
             'activity_type_id' => ActivityType::factory(),
         ];
     }
+
+    public function withPhoto()
+    {
+        return $this->afterCreating(function ($activity) {
+            if (rand(0, 1)) {
+                $activity->photos()->create([
+                    'photoable_type' => Activity::class,
+                    'photoable_id' => $activity->id,
+                    'photo_url' => asset('images/default_activity_photo.png')
+                ]);
+            }
+        });
+    }
 }

@@ -14,13 +14,9 @@ class ActivitySeeder extends Seeder
         $types = ActivityType::all();
 
         foreach ($types as $type) {
-            Activity::factory(5)->create([
+            Activity::factory(5)->withPhoto()->create([
                 'activity_type_id' => $type->id,
-            ])->each(function ($activity) {
-                $activity->photos()->saveMany(
-                    Photo::factory(rand(1, 5))->make()
-                );
-            });
+            ]);
         }
     }
 }

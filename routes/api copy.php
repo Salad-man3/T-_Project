@@ -12,9 +12,6 @@ use App\Http\Controllers\Api\ApiPhotoController;
 use App\Http\Controllers\Api\ApiComplaintController;
 use App\Http\Controllers\Api\ApiDecisionController;
 
-use App\Http\Controllers\Api\AdminController;
-
-
 
 Route::apiResource('news', ApiNewsController::class);
 Route::apiResource('services', ApiServiceController::class);
@@ -32,18 +29,3 @@ Route::delete('complaints/{id}/force', [ApiComplaintController::class, 'forceDel
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-
-Route::get('test', function () {
-    return response()->json(['message' => 'API is working']);
-});
-
-
-Route::post('admin/login', [AdminController::class, 'login']);
-Route::middleware('auth:sanctum')->group(function () {
-    Route::post('admin/logout', [AdminController::class, 'logout']);
-    Route::get('admin/me', [AdminController::class, 'me']);
-});
-
-// Route::middleware(['auth:sanctum', 'ability:admin'])->group(function () {
-//     // Your protected admin API routes here
-// });
