@@ -70,7 +70,7 @@ Before you begin, ensure you have:
 ## 🔧 Usage
 - Access the application at `http://localhost:8000`
 - API documentation is available at:
-  - Postman: `https://documenter.getpostman.com/view/36834914/2sAXqtZfy1`
+  - Postman: `https://documenter.getpostman.com/view/36834914/2sAXqtb23Y`
   - OpenAPI: `/docs/index.html` (when served locally)
 
 ## 🔐 Admin Authentication
