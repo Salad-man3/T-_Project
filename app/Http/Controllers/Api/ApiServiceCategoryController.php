@@ -8,6 +8,7 @@ use App\Models\ServiceCategory;
 use App\Http\Resources\ServiceCategoryResource;
 use Illuminate\Support\Facades\Validator;
 use OpenApi\Annotations as OA;
+use Illuminate\Support\Facades\Log;
 
 
 class ApiServiceCategoryController extends Controller
@@ -58,6 +59,7 @@ class ApiServiceCategoryController extends Controller
 
     public function update(Request $request, ServiceCategory $serviceCategory)
     {
+        Log::info('Updating service category with ID: ' . $serviceCategory->id);
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
         ]);
