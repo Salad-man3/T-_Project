@@ -31,6 +31,10 @@ class ApiComplaintController extends Controller
 
         $complaints = $query->get();
 
+        if ($complaints->isEmpty()) {
+            return response()->json(['message' => 'No complaints found'], 404);
+        }
+
         return response()->json([
             'count' => $complaints->count(),
             'data' => ComplaintResource::collection($complaints),

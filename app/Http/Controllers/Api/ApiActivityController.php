@@ -11,6 +11,8 @@ use OpenApi\Annotations as OA;
 use App\Models\Photo;
 use Illuminate\Support\Facades\Log;
 use App\Models\ActivityType;
+use App\Exceptions\UnauthorizedException;
+use Illuminate\Support\Facades\Auth;
 
 class ApiActivityController extends Controller
 {
@@ -34,6 +36,10 @@ class ApiActivityController extends Controller
 
         $activities = $query->get();
 
+        if ($activities->isEmpty()) {
+            return response()->json(['message' => 'No activities found'], 404);
+        }
+
         return response()->json([
             'count' => $activities->count(),
             'data' => ActivityResource::collection($activities),
@@ -42,6 +48,11 @@ class ApiActivityController extends Controller
 
     public function store(Request $request)
     {
+        // Check for authorization
+        if (!Auth::check()) {
+            throw new UnauthorizedException();
+        }
+
 
         // Validation rules
         $validator = Validator::make($request->all(), [
@@ -150,5 +161,3 @@ class ApiActivityController extends Controller
         return response()->json(['message' => 'Activity deleted successfully'], 200);
     }
 }
-
-

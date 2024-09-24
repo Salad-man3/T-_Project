@@ -25,6 +25,10 @@ class ApiActivityTypeController extends Controller
 
         $activityTypes = $query->get();
 
+        if ($activityTypes->isEmpty()) {
+            return response()->json(['message' => 'No activity types found'], 404);
+        }
+
         return response()->json([
             'count' => $activityTypes->count(),
             'data' => ActivityTypeResource::collection($activityTypes),

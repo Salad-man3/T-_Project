@@ -30,6 +30,11 @@ class ApiServiceController extends Controller
 
         $services = $query->get();
 
+        if ($services->isEmpty()) {
+            return response()->json(['message' => 'No activities found'], 404);
+        }
+
+
         return response()->json([
             'count' => $services->count(),
             'data' => ServiceResource::collection($services),

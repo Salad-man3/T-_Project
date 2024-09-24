@@ -27,13 +27,14 @@ class ApiNewsController extends Controller
 
         $news = $query->get();
 
-        if ($news->count() > 0) {
-            return NewsResource::collection($news);
-        } else {
-            return response()->json([
-                'count' => $news->count(),
-                'message' => 'No news found'], 200);
+        if ($news->isEmpty()) {
+            return response()->json(['message' => 'No news found'], 404);
         }
+
+        return response()->json([
+            'count' => $news->count(),
+            'data' => NewsResource::collection($news),
+        ]);
     }
 
 

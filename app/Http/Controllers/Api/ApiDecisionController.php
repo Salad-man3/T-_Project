@@ -25,13 +25,16 @@ class ApiDecisionController extends Controller
 
         $decisions = $query->get();
 
-        if ($decisions->count() > 0) {
-            return DecisionResource::collection($decisions);
-        } else {
-            return response()->json([
-                'count' => $decisions->count(),
-                'message' => 'No decisions found'], 200);
+        if ($decisions->isEmpty()) {
+            return response()->json(['message' => 'No decisions found'], 404);
         }
+
+        return response()->json([
+            'count' => $decisions->count(),
+            'data' => DecisionResource::collection($decisions),
+        ]);
+
+
     }
 
     public function store(Request $request)
