@@ -25,11 +25,10 @@ class ApiActivityTypeController extends Controller
 
         $activityTypes = $query->get();
 
-        if ($activityTypes->count() > 0) {
-            return ActivityTypeResource::collection($activityTypes);
-        } else {
-            return response()->json(['message' => 'No activity types found'], 200);
-        }
+        return response()->json([
+            'count' => $activityTypes->count(),
+            'data' => ActivityTypeResource::collection($activityTypes),
+        ]);
     }
 
     public function store(Request $request)

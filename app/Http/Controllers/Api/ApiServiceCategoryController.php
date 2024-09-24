@@ -29,7 +29,7 @@ class ApiServiceCategoryController extends Controller
         if ($serviceCategories->count() > 0) {
             return ServiceCategoryResource::collection($serviceCategories);
         } else {
-            return response()->json(['message' => 'No service categories found'], 200);
+            return response()->json(['count' => $serviceCategories->count(),'message' => 'No service categories found'], 200);
         }
     }
 
@@ -59,7 +59,6 @@ class ApiServiceCategoryController extends Controller
 
     public function update(Request $request, ServiceCategory $serviceCategory)
     {
-        Log::info('Updating service category with ID: ' . $serviceCategory->id);
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
         ]);

@@ -19,6 +19,7 @@ class ActivityResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'activity_type_id' => $this->activity_type_id,
+            'activity_type_name' => $this->activityType->name, // Add this line
             'activity_date' => $this->activity_date,
             'photos' => $this->whenLoaded('photos', function () {
                 return $this->photos->map(function ($photo) {

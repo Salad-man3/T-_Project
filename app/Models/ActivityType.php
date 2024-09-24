@@ -17,4 +17,9 @@ class ActivityType extends Model
     {
         return $this->hasMany(Activity::class);
     }
+
+    public function activityTypeByName($name)
+    {
+        return ActivityType::where('name', $name)->first();
+    }
 }

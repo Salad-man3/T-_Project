@@ -23,6 +23,9 @@ Route::apiResource('photo', ApiPhotoController::class)->only(['index', 'show']);
 Route::apiResource('decision', ApiDecisionController::class)->only(['index', 'show']);
 Route::post('complaint', [ApiComplaintController::class, 'store']);
 
+Route::get('complaint', [ApiComplaintController::class, 'index']);
+Route::get('complaint/{complaint}', [ApiComplaintController::class, 'show']);
+
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -66,8 +69,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('decision/{decision}', [ApiDecisionController::class, 'destroy']);
 
 
-    Route::get('complaint', [ApiComplaintController::class, 'index']);
-    Route::get('complaint/{complaint}', [ApiComplaintController::class, 'show']);
+
     Route::put('complaint/{complaint}', [ApiComplaintController::class, 'update']);
     Route::delete('complaint/{complaint}', [ApiComplaintController::class, 'destroy']);
 

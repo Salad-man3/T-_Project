@@ -17,8 +17,13 @@ class ApiComplaintController extends Controller
     public function index(Request $request)
     {
         $limit = $request->query('limit', null);
+        $status = $request->query('status', null);
 
         $query = Complaint::with('photos')->latest();
+
+        if ($status) {
+            $query->where('status', $status);
+        }
 
         if ($limit && is_numeric($limit)) {
             $query->limit($limit);
@@ -26,22 +31,20 @@ class ApiComplaintController extends Controller
 
         $complaints = $query->get();
 
-        if ($complaints->count() > 0) {
-            return ComplaintResource::collection($complaints);
-        } else {
-            return response()->json(['message' => 'No complaints found'], 200);
-        }
+        return response()->json([
+            'count' => $complaints->count(),
+            'data' => ComplaintResource::collection($complaints),
+        ]);
     }
 
     public function store(Request $request)
     {
-        Log::info('Received request data:', $request->all());
 
         $validator = Validator::make($request->all(), [
             'name' => 'nullable|string|max:255',
             'number' => 'nullable|string|max:255',
             'description' => 'required|string',
-            'status' => 'sometimes|string|in:unresolved,resolved,in_progress',
+            'status' => 'sometimes|string|in:unresolved,resolved,in progress',
             'photos' => 'nullable|array',
             'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -71,22 +74,17 @@ class ApiComplaintController extends Controller
                         'photo_url' => asset('images/' . $image_name)
                     ]);
                     $complaint->photos()->save($photo);
-                    Log::info('Photo saved:', ['photo_url' => $photo->photo_url]);
                 }
-            } else {
-                Log::info('No photos found in request');
             }
 
             $complaint->load('photos');
 
-            Log::info('Complaint created:', ['complaint' => $complaint->toArray()]);
 
             return response()->json([
                 'message' => 'Complaint created successfully',
                 'complaint' => new ComplaintResource($complaint)
             ], 201);
         } catch (\Exception $e) {
-            Log::error('Error creating complaint: ' . $e->getMessage());
             return response()->json(['message' => 'Error creating complaint', 'error' => $e->getMessage()], 500);
         }
     }
@@ -101,7 +99,7 @@ class ApiComplaintController extends Controller
             'name' => 'sometimes|nullable|string|max:255',
             'number' => 'sometimes|nullable|string|max:255',
             'description' => 'sometimes|required|string',
-            'status' => 'sometimes|string|in:unresolved,resolved,in_progress',
+            'status' => 'sometimes|string|in:unresolved,resolved,in progress',
             'photos' => 'nullable|array',
             'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);

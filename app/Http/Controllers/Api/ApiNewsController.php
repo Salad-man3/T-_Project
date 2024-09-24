@@ -30,7 +30,9 @@ class ApiNewsController extends Controller
         if ($news->count() > 0) {
             return NewsResource::collection($news);
         } else {
-            return response()->json(['message' => 'No news found'], 200);
+            return response()->json([
+                'count' => $news->count(),
+                'message' => 'No news found'], 200);
         }
     }
 
@@ -56,7 +58,6 @@ class ApiNewsController extends Controller
 
             if ($request->hasFile('photos')) {
                 foreach ($request->file('photos') as $image) {
-                    Log::info('Photo found in request');
                     $image_name = time() . '_' . $image->getClientOriginalName();
                     $image->move(public_path('images'), $image_name);
 
@@ -66,17 +67,13 @@ class ApiNewsController extends Controller
                         'photo_url' => asset('images/' . $image_name)
                     ]);
                     $news->photos()->save($photo);
-                    Log::info('Photo saved:', ['photo_url' => $photo->photo_url]);
                 }
-            } else {
-                Log::info('No photos found in request');
             }
 
             $news->load('photos');
 
             return response()->json(['message' => 'News created successfully', 'news' => new NewsResource($news)], 201);
         } catch (\Exception $e) {
-            Log::error('Error creating news: ' . $e->getMessage());
             return response()->json(['message' => 'Error creating news', 'error' => $e->getMessage()], 500);
         }
     }

@@ -10,11 +10,9 @@ class ActivityTypeSeeder extends Seeder
     public function run(): void
     {
         $types = [
-            'Workshop',
-            'Conference',
-            'Seminar',
-            'Meeting',
-            'Training',
+            'activities',
+            'businesses',
+            'events'
         ];
 
         foreach ($types as $type) {

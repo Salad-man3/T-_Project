@@ -16,19 +16,24 @@ class ApiServiceController extends Controller
     public function index(Request $request)
     {
         $limit = $request->query('limit', null);
+        $serviceCategoryId = $request->query('service_category_id', null);
 
         $query = Service::latest();
+
+        if ($serviceCategoryId) {
+            $query->where('service_category_id', $serviceCategoryId);
+        }
 
         if ($limit && is_numeric($limit)) {
             $query->limit($limit);
         }
 
         $services = $query->get();
-        if ($services->count() > 0) {
-            return ServiceResource::collection($services);
-        } else {
-            return response()->json(['message' => 'No services found'], 200);
-        }
+
+        return response()->json([
+            'count' => $services->count(),
+            'data' => ServiceResource::collection($services),
+        ]);
     }
 
 

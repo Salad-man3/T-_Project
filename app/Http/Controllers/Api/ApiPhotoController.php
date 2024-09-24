@@ -18,7 +18,7 @@ class ApiPhotoController extends Controller
             $query->limit($limit);
         }
         $photos = $query->get();
-        return $photos->count() > 0 ? PhotoResource::collection($photos) : response()->json(['message' => 'No photos found'], 200);
+        return $photos->count() > 0 ? PhotoResource::collection($photos) : response()->json(['count' => $photos->count(),'message' => 'No photos found'], 200);
     }
 
     public function store(Request $request)
