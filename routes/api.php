@@ -13,6 +13,9 @@ use App\Http\Controllers\Api\ApiComplaintController;
 use App\Http\Controllers\Api\ApiDecisionController;
 
 use App\Http\Controllers\Api\AdminController;
+use App\Http\Controllers\Api\CouncilMemberController;
+
+Route::apiResource('council-members', CouncilMemberController::class);
 
 Route::apiResource('news', ApiNewsController::class)->only(['index', 'show']);
 Route::apiResource('services', ApiServiceController::class)->only(['index', 'show']);

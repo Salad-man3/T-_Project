@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ActivitySeeder::class,
             DecisionSeeder::class,
             ComplaintSeeder::class,
+            CouncilMemberSeeder::class,
             // PhotoSeeder::class, // Add this line
 
         ]);
