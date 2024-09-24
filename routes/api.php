@@ -15,7 +15,7 @@ use App\Http\Controllers\Api\ApiDecisionController;
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\CouncilMemberController;
 
-Route::apiResource('council-members', CouncilMemberController::class);
+Route::apiResource('council-members', CouncilMemberController::class)->only(['index', 'show']);
 
 Route::apiResource('news', ApiNewsController::class)->only(['index', 'show']);
 Route::apiResource('services', ApiServiceController::class)->only(['index', 'show']);
@@ -29,7 +29,6 @@ Route::post('complaint', [ApiComplaintController::class, 'store']);
 Route::get('complaint', [ApiComplaintController::class, 'index']);
 Route::get('complaint/{complaint}', [ApiComplaintController::class, 'show']);
 
-
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
@@ -42,11 +41,7 @@ Route::post('admin/login', [AdminController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('admin/logout', [AdminController::class, 'logout']);
     Route::get('admin/me', [AdminController::class, 'me']);
-});
-// Route::put('service-categories/{service-categories}', [ApiServiceCategoryController::class, 'update']);
 
-
-Route::middleware('auth:sanctum')->group(function () {
     Route::post('news', [ApiNewsController::class, 'store']);
     Route::put('news/{news}', [ApiNewsController::class, 'update']);
     Route::delete('news/{news}', [ApiNewsController::class, 'destroy']);
@@ -71,6 +66,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('decision/{decision}', [ApiDecisionController::class, 'update']);
     Route::delete('decision/{decision}', [ApiDecisionController::class, 'destroy']);
 
+    Route::post('council-members', [CouncilMemberController::class, 'store']);
+    Route::put('council-members/{council_member}', [CouncilMemberController::class, 'update']);
+    Route::delete('council-members/{council_member}', [CouncilMemberController::class, 'destroy']);
 
 
     Route::put('complaint/{complaint}', [ApiComplaintController::class, 'update']);
@@ -80,8 +78,4 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('complaints/{id}/restore', [ApiComplaintController::class, 'restore']);
     Route::delete('complaints/{id}/force', [ApiComplaintController::class, 'forceDelete']);
     Route::get('complaints/trashed', [ApiComplaintController::class, 'trashed']);
-
-
-    Route::post('complaints/{id}/restore', [ApiComplaintController::class, 'restore']);
-    Route::delete('complaints/{id}/force', [ApiComplaintController::class, 'forceDelete']);
 });
