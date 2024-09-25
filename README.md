@@ -5,13 +5,16 @@ This project is a robust and scalable API built with Laravel, designed to provid
 
 ## ✨ Key Features
 - 🔐 **Admin Authentication**: Secure admin login system using Laravel Sanctum
-- 🌐 **RESTful API**: Comprehensive endpoints for various resources (news, services, complaints, decisions, etc.)
-- 💾 **CRUD Operations**: Full Create, Read, Update, and Delete functionality
+- 🌐 **RESTful API**: Comprehensive endpoints for various resources (news, services, complaints, decisions,council members, etc.)
+- 💾 **CRUD Operations**: Full Create, Read, Update, and Delete functionality for all resources
 - 🗃️ **Database Integration**: Efficient database operations with Laravel's Eloquent ORM
 - ✅ **Input Validation**: Thorough server-side validation for data integrity
 - 🗑️ **Soft Deletes**: Data recovery functionality (e.g., for complaints)
 - 📚 **API Documentation**: Interactive documentation with Postman and OpenAPI
 - 🔒 **Role-Based Access Control**: Admin-specific routes and permissions
+- 📦 **CORS Support**: Configured for cross-origin resource sharing to allow API access from different domains
+- 📖 **Postman Collection**: Predefined requests for testing API endpoints easily
+- 🔄 **Version Control**: Managed with Git for collaborative development and version tracking
 
 ## 🛠️ Technical Specifications
 - **Framework**: Laravel 11.x
