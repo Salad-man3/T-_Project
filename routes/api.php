@@ -11,7 +11,6 @@ use App\Http\Controllers\Api\ApiActivityTypeController;
 use App\Http\Controllers\Api\ApiPhotoController;
 use App\Http\Controllers\Api\ApiComplaintController;
 use App\Http\Controllers\Api\ApiDecisionController;
-
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\CouncilMemberController;
 
@@ -32,12 +31,15 @@ Route::get('complaint/{complaint}', [ApiComplaintController::class, 'show']);
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-
+//this tests if the api is working
 Route::get('test', function () {
     return response()->json(['message' => 'API is working']);
 });
 
 Route::post('admin/login', [AdminController::class, 'login']);
+
+
+//this is the group of routes that needs the jwt admin_auth token
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('admin/logout', [AdminController::class, 'logout']);
     Route::get('admin/me', [AdminController::class, 'me']);
