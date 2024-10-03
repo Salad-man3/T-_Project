@@ -80,7 +80,7 @@ To access admin-only routes:
 
 ## 📘 API Documentation
 - API documentation is available at:
-  - Postman: `https://documenter.getpostman.com/view/36834914/2sAXqtb23Y`
+  - Postman: `https://documenter.getpostman.com/view/36834914/2sAXxLBZom`
 
 
 ## 📄 License
