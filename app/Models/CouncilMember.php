@@ -12,6 +12,8 @@ class CouncilMember extends Model
     protected $fillable = [
         'name',
         'photo_id',
+        'job_title', // Add job_title to fillable
+        'description', // Add description to fillable
     ];
 
     public function photo()

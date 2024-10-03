@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('council_members', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('job_title')->nullable(); // Add job_title column
+            $table->text('description')->nullable(); // Add description column
             $table->timestamps();
         });
     }

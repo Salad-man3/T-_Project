@@ -12,6 +12,8 @@ class CouncilMemberResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'job_title' => $this->job_title, // Include job_title
+            'description' => $this->description, // Include description
             'photo' => $this->whenLoaded('photo', function () {
                 return $this->photo ? $this->photo->photo_url : null;
             }),
