@@ -8,7 +8,7 @@ use App\Models\Decision;
 use App\Http\Resources\DecisionResource;
 use Illuminate\Support\Facades\Validator;
 use OpenApi\Annotations as OA;
-
+use App\Models\Photo;
 
 class ApiDecisionController extends Controller
 {
@@ -17,7 +17,7 @@ class ApiDecisionController extends Controller
     {
         $limit = $request->query('limit', null);
 
-        $query = Decision::latest();
+        $query = Decision::with('photos')->latest();
 
         if ($limit && is_numeric($limit)) {
             $query->limit($limit);
@@ -44,26 +44,47 @@ class ApiDecisionController extends Controller
             'decision_date' => 'required|date',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
+            'photos' => 'nullable|array',
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['message' => 'Validation failed', 'errors' => $validator->errors()], 422);
         }
 
-        $decision = Decision::create([
-            'decision_id' => (int) $request->decision_id,
-            'decision_date' => $request->decision_date,
-            'title' => $request->title,
-            'description' => $request->description,
-        ]);
+        try {
+            $decision = Decision::create([
+                'decision_id' => (int) $request->decision_id,
+                'decision_date' => $request->decision_date,
+                'title' => $request->title,
+                'description' => $request->description,
+            ]);
 
-        return response()->json(['message' => 'Decision created successfully'], 201);
+            if ($request->hasFile('photos')) {
+                foreach ($request->file('photos') as $image) {
+                    $image_name = time() . '_' . $image->getClientOriginalName();
+                    $image->move(public_path('images'), $image_name);
+
+                    $photo = new Photo([
+                        'photoable_type' => Decision::class,
+                        'photoable_id' => $decision->id,
+                        'photo_url' => asset('images/' . $image_name)
+                    ]);
+                    $decision->photos()->save($photo);
+                }
+            }
+
+            $decision->load('photos');
+
+            return response()->json(['message' => 'Decision created successfully', 'decision' => new DecisionResource($decision)], 201);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error creating decision', 'error' => $e->getMessage()], 500);
+        }
     }
-
 
     public function show(Decision $decision)
     {
-        return new DecisionResource($decision);
+        return new DecisionResource($decision->load('photos'));
     }
 
     public function update(Request $request, Decision $decision)
@@ -73,6 +94,8 @@ class ApiDecisionController extends Controller
             'decision_date' => 'required|date',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
+            'photos' => 'nullable|array',
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -86,7 +109,26 @@ class ApiDecisionController extends Controller
             'description' => $request->description,
         ]);
 
-        return response()->json(['message' => 'Decision updated successfully'], 201);
+        if ($request->hasFile('photos')) {
+            // Remove existing photos
+            $decision->photos()->delete();
+
+            foreach ($request->file('photos') as $image) {
+                $image_name = time() . '_' . $image->getClientOriginalName();
+                $image->move(public_path('images'), $image_name);
+
+                $photo = new Photo([
+                    'photoable_type' => Decision::class,
+                    'photoable_id' => $decision->id,
+                    'photo_url' => asset('images/' . $image_name)
+                ]);
+                $decision->photos()->save($photo);
+            }
+        }else {
+            $decision->photos()->delete();
+        }
+
+        return response()->json(['message' => 'Decision updated successfully', 'decision' => new DecisionResource($decision->fresh()->load('photos'))], 200);
     }
 
 

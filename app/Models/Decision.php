@@ -20,4 +20,9 @@ class Decision extends Model
         'decision_id' => 'integer',
         'decision_date' => 'date',
     ];
+
+    public function photos()
+    {
+        return $this->morphMany(Photo::class, 'photoable');
+    }
 }

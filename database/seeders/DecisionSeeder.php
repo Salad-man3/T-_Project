@@ -9,6 +9,6 @@ class DecisionSeeder extends Seeder
 {
     public function run(): void
     {
-        Decision::factory(30)->create();
+        Decision::factory(30)->withPhotos(2)->create(); // Create 30 decisions with 2 photos each
     }
 }
