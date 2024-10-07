@@ -53,7 +53,6 @@ class ApiActivityController extends Controller
             throw new UnauthorizedException();
         }
 
-
         // Validation rules
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
@@ -81,13 +80,13 @@ class ApiActivityController extends Controller
 
             if ($request->hasFile('photos')) {
                 foreach ($request->file('photos') as $image) {
-                    $image_name = time() . '_' . $image->getClientOriginalName();
+                    $image_name = time() . '_' . preg_replace('/\s+/', '_', $image->getClientOriginalName()); // Replace spaces with underscores
                     $image->move(public_path('images'), $image_name);
 
                     $photo = new Photo([
                         'photoable_type' => Activity::class,
                         'photoable_id' => $activity->id,
-                        'photo_url' => asset('images/' . $image_name)
+                        'photo_url' => asset('images/' . urlencode($image_name))
                     ]);
                     $activity->photos()->save($photo);
                 }
@@ -138,13 +137,13 @@ class ApiActivityController extends Controller
             $activity->photos()->delete();
 
             foreach ($request->file('photos') as $image) {
-                $image_name = time() . '_' . $image->getClientOriginalName();
+                $image_name = time() . '_' . preg_replace('/\s+/', '_', $image->getClientOriginalName()); // Replace spaces with underscores
                 $image->move(public_path('images'), $image_name);
 
                 $photo = new Photo([
                     'photoable_type' => Activity::class,
                     'photoable_id' => $activity->id,
-                    'photo_url' => asset('images/' . $image_name)
+                    'photo_url' => asset('images/' . urlencode($image_name))
                 ]);
                 $activity->photos()->save($photo);
             }

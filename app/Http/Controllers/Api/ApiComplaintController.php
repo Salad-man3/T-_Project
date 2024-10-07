@@ -69,13 +69,13 @@ class ApiComplaintController extends Controller
             if ($request->hasFile('photos')) {
                 foreach ($request->file('photos') as $image) {
                     Log::info('Photo found in request');
-                    $image_name = time() . '_' . $image->getClientOriginalName();
+                    $image_name = time() . '_' . preg_replace('/\s+/', '_', $image->getClientOriginalName());
                     $image->move(public_path('images'), $image_name);
 
                     $photo = new Photo([
                         'photoable_type' => Complaint::class,
                         'photoable_id' => $complaint->id,
-                        'photo_url' => asset('images/' . $image_name)
+                        'photo_url' => asset('images/' . urlencode($image_name))
                     ]);
                     $complaint->photos()->save($photo);
                 }
@@ -124,13 +124,13 @@ class ApiComplaintController extends Controller
             $complaint->photos()->delete();
 
             foreach ($request->file('photos') as $image) {
-                $image_name = time() . '_' . $image->getClientOriginalName();
+                $image_name = time() . '_' . preg_replace('/\s+/', '_', $image->getClientOriginalName());
                 $image->move(public_path('images'), $image_name);
 
                 $photo = new Photo([
                     'photoable_type' => Complaint::class,
                     'photoable_id' => $complaint->id,
-                    'photo_url' => asset('images/' . $image_name)
+                    'photo_url' => asset('images/' . urlencode($image_name))
                 ]);
                 $complaint->photos()->save($photo);
             }

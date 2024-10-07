@@ -62,13 +62,13 @@ class ApiDecisionController extends Controller
 
             if ($request->hasFile('photos')) {
                 foreach ($request->file('photos') as $image) {
-                    $image_name = time() . '_' . $image->getClientOriginalName();
+                    $image_name = time() . '_' . preg_replace('/\s+/', '_', $image->getClientOriginalName());
                     $image->move(public_path('images'), $image_name);
 
                     $photo = new Photo([
                         'photoable_type' => Decision::class,
                         'photoable_id' => $decision->id,
-                        'photo_url' => asset('images/' . $image_name)
+                        'photo_url' => asset('images/' . urlencode($image_name))
                     ]);
                     $decision->photos()->save($photo);
                 }
@@ -114,13 +114,13 @@ class ApiDecisionController extends Controller
             $decision->photos()->delete();
 
             foreach ($request->file('photos') as $image) {
-                $image_name = time() . '_' . $image->getClientOriginalName();
+                $image_name = time() . '_' . preg_replace('/\s+/', '_', $image->getClientOriginalName());
                 $image->move(public_path('images'), $image_name);
 
                 $photo = new Photo([
                     'photoable_type' => Decision::class,
                     'photoable_id' => $decision->id,
-                    'photo_url' => asset('images/' . $image_name)
+                    'photo_url' => asset('images/' . urlencode($image_name))
                 ]);
                 $decision->photos()->save($photo);
             }

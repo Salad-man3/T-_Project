@@ -17,8 +17,6 @@ class CouncilMemberResource extends JsonResource
             'photo' => $this->whenLoaded('photo', function () {
                 return $this->photo ? $this->photo->photo_url : null;
             }),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ];
     }
 }

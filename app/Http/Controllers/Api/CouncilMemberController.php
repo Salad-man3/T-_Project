@@ -61,13 +61,13 @@ class CouncilMemberController extends Controller
 
             if ($request->hasFile('photo')) {
                 $image = $request->file('photo');
-                $image_name = time() . '_' . $image->getClientOriginalName();
+                $image_name = time() . '_' . preg_replace('/\s+/', '_', $image->getClientOriginalName());
                 $image->move(public_path('images'), $image_name);
 
                 $photo = new Photo([
                     'photoable_type' => CouncilMember::class,
                     'photoable_id' => $council_member->id,
-                    'photo_url' => asset('images/' . $image_name)
+                    'photo_url' => asset('images/' . urlencode($image_name))
                 ]);
                 $council_member->photo()->save($photo);
             }
@@ -109,13 +109,13 @@ class CouncilMemberController extends Controller
             $council_member->photo()->delete();
 
             $image = $request->file('photo');
-            $image_name = time() . '_' . $image->getClientOriginalName();
+            $image_name = time() . '_' . preg_replace('/\s+/', '_', $image->getClientOriginalName());
             $image->move(public_path('images'), $image_name);
 
             $photo = new Photo([
                 'photoable_type' => CouncilMember::class,
                 'photoable_id' => $council_member->id,
-                'photo_url' => asset('images/' . $image_name)
+                'photo_url' => asset('images/' . urlencode($image_name))
             ]);
             $council_member->photo()->save($photo);
         } else {

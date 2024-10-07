@@ -23,7 +23,6 @@ class ComplaintResource extends JsonResource
             'photos' => $this->whenLoaded('photos', function () {
                 return $this->photos->map(function ($photo) {
                     return [
-                        'id' => $photo->id,
                         'photo_url' => $photo->photo_url,
                     ];
                 });
