@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Log;
 use App\Models\ActivityType;
 use App\Exceptions\UnauthorizedException;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+
 
 class ApiActivityController extends Controller
 {
@@ -48,9 +52,12 @@ class ApiActivityController extends Controller
 
     public function store(Request $request)
     {
-        // Check for authorization
-        if (!Auth::check()) {
-            throw new UnauthorizedException();
+        $admin = Admin::where('email', $request->email)->first();
+
+        if (! $admin || ! Hash::check($request->password, $admin->password)) {
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
         }
 
         // Validation rules
@@ -147,8 +154,6 @@ class ApiActivityController extends Controller
                 ]);
                 $activity->photos()->save($photo);
             }
-        } else {
-            $activity->photos()->delete();
         }
 
         return response()->json(['message' => 'Activity updated successfully', 'activity' => new ActivityResource($activity->fresh()->load('photos'))], 200);

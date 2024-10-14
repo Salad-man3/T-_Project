@@ -118,8 +118,6 @@ class CouncilMemberController extends Controller
                 'photo_url' => asset('images/' . urlencode($image_name))
             ]);
             $council_member->photo()->save($photo);
-        } else {
-            $council_member->photo()->delete();
         }
 
         return response()->json(['message' => 'Council member updated successfully'], 200);

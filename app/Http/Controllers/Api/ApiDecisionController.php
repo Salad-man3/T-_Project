@@ -124,8 +124,6 @@ class ApiDecisionController extends Controller
                 ]);
                 $decision->photos()->save($photo);
             }
-        }else {
-            $decision->photos()->delete();
         }
 
         return response()->json(['message' => 'Decision updated successfully', 'decision' => new DecisionResource($decision->fresh()->load('photos'))], 200);

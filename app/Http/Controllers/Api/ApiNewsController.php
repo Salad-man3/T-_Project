@@ -118,8 +118,6 @@ class ApiNewsController extends Controller
                 ]);
                 $news->photos()->save($photo);
             }
-        } else {
-            $news->photos()->delete();
         }
 
         return response()->json(['message' => 'News updated successfully', 'news' => new NewsResource($news->fresh()->load('photos'))], 200);
